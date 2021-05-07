@@ -4,7 +4,7 @@ function greet(){
     return <h1>Hello Sukarna Jana</h1>
 }
 */
-const greet = () => <div className="App"><h3>Hello Sukarna Jana</h3></div>;
+const greet = () => (<h3>Hello Sukarna Jana</h3>);
 
 export default greet;
 // export const greet = () => <h1>Hello Sukarna Jana</h1>
