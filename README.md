@@ -25,13 +25,15 @@ in React a components represent a part of the user interface
     * components Type:
         1. Stateless Functional Component
         2. Stateful Class Component
-example for Stateless Functional Component : 
+
+example for Stateless Functional Component : \
     ```js
     function welcome(props){
         return <h1> Hello, {props.name} </h1>;
     }
     ```
-example for Stateful Class Component : 
+
+example for Stateful Class Component : \
     ```js
     class welcome extends React.Component(){
         render(){
