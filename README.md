@@ -17,4 +17,27 @@ You can use this Repository for your learnig perpose also...
 ```npm install <package name> --save```
 * now we will work with src dir.
 
+# Documentation
+
+* ## Components
+in React a components represent a part of the user interface
+    * they are reusable
+    * components Type:
+        1. Stateless Functional Component
+        2. Stateful Class Component
+example for Stateless Functional Component : 
+    ```js
+    function welcome(props){
+        return <h1> Hello, {props.name} </h1>;
+    }
+    ```
+example for Stateful Class Component : 
+    ```js
+    class welcome extends React.Component(){
+        render(){
+            return <h1> Hello, {props.name} </h1>;
+        }
+    }
+    ```
+
 License Under : [LICENSE](LICENSE)
