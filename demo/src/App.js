@@ -1,26 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+//import React,{Component} from 'react';
+import greet from './components/greet';
+//import {greet} from './components/greet';
+import welcome from './components/welcome';
 
+/*
+ * dont know why greet and welcome tags are not working
+ */
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-      <p>
-        <h1>Hello, Sukarna Jana</h1>
-      </p>
-      <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Its My First React Based Project
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <greet/>
+      <welcome/>
+      <h1>Hello Sukarna Jana</h1><hr/>  
     </div>
   );
 }
