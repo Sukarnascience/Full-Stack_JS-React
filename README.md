@@ -14,8 +14,7 @@ License Under : [LICENSE](LICENSE)
 ```create-react-app <Folder/project Name>```
 * Install : React Developer Tools For Chrome extension
 * you will get a package.json file in which help to handel all our packages...
-* Install some more things:
-> what this will do is it will uinstall and update our package.json file
+* how to Install new things:
+> what this will do is... it will install and update our package.json file
 ```npm install <package name> --save```
-    * ```npm install react-router --save```
 * now we will work with src dir.
