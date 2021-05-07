@@ -11,7 +11,7 @@ License Under : [LICENSE](LICENSE)
 ```npm install -g create-react-app```
 > in my case i had to use ```sudo npm install -g create-react-app```
 * we will install in a project dir. 
-```create-react-app <Folder Name>```
+```create-react-app <Folder/project Name>```
 * Install : React Developer Tools For Chrome extension
 * you will get a package.json file in which help to handel all our packages...
 * Install some more things:
