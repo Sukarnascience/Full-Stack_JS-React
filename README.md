@@ -2,8 +2,6 @@
 > Learning Stage Of Full Stack JavaScript
 You can use this Repository for your learnig perpose also...
 
-License Under : [LICENSE](LICENSE)
-
 ## Installing React 
 * hope you have install NODE.JS
 * we can install Globaly or Locally 
@@ -18,3 +16,5 @@ License Under : [LICENSE](LICENSE)
 > what this will do is... it will install and update our package.json file
 ```npm install <package name> --save```
 * now we will work with src dir.
+
+License Under : [LICENSE](LICENSE)
