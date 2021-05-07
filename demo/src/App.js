@@ -5,12 +5,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <p>
+        <h1>Hello, Sukarna Jana</h1>
+      </p>
+      <img src={logo} className="App-logo" alt="logo" />
         <p>
           Its My First React Based Project
-        </p>
-        <p>
-          Sukarna Jana
         </p>
         <a
           className="App-link"

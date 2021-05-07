@@ -37,7 +37,7 @@ example for Stateful Class Component : \
 ```js
 class welcome extends React.Component(){
     render(){
-        return <h1> Hello, {props.name} </h1>;
+        return <h1> Hello, {this.props.name} </h1>;
     }
 }
 ```
