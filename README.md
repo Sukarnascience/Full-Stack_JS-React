@@ -23,17 +23,19 @@ You can use this Repository for your learnig perpose also...
 in React a components represent a part of the user interface
     * they are reusable
     * components Type:
-        1. Stateless Functional Component
-        2. Stateful Class Component
+        1. Functional Component
+        2. Class Component
 
-example for Stateless Functional Component : \
+example for Functional Component : \
+welcome.js
 ``` js
 function welcome(props){
     return <h1> Hello, {props.name} </h1>;
 }
 ```
 
-example for Stateful Class Component : \
+example for Class Component : \
+greet.js
 ```js
 class welcome extends React.Component(){
     render(){
@@ -42,7 +44,8 @@ class welcome extends React.Component(){
 }
 ```
 
-To use your Component in other file : \
+To use your Component in other file :\ 
+App.js
 ```js
 import Greet from './components/greet'; // file location
 import Welcome from './components/welcome'; // file location
@@ -56,5 +59,43 @@ function App() {
   );
 }
 ```
+
+* ## uses of JSX and see different without JSX
+  * With JSX
+    hello.js
+    ```js
+    import React from "react";
+    const Hello = () => {
+        return(
+            <p>Hello.. hehee! It's is a JSX function</p>
+        );
+    }
+    export default Hello;
+    ```
+  * Without JSX
+  hellohi.js
+  ```js
+  import React from "react";
+  const Hellohi = () => {
+      return React.createElement('div',null,React.createElement('h3',null,"without JSX"))
+  }
+  export default Hellohi;
+  ```
+  the 2nd parameter in create elements is for object key value pairs 
+  that will be appended to the elements \
+  eg: we need id attributes in div tag
+  ```js
+  return React.createElement('div',{id:"hello"},React.createElement('h3',null,"without JSX"))
+  ```
+  Output will be: ```<div id="hello"><h3>without JSX</h3></div>```\
+  * ### JSX difference
+    1. class -> className
+    2. for   -> htmlFor
+    3. camelCase property nameing convention
+      a. onclick -> onClick
+      b. tabindex-> tabindex
+
+
+export default Hello;
 
 License Under : [LICENSE](LICENSE)

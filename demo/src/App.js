@@ -3,6 +3,8 @@ import React from 'react';
 import Greet from './components/greet';
 import Welcome from './components/welcome';
 import Typical from 'react-typical';
+import Hello from './components/hello';
+import Hellohi from './components/hellohi';
 //import React,{Component} from 'react';
 //import {greet} from './components/greet';
 
@@ -30,6 +32,8 @@ function App() {
         />
       <Greet />
       <Welcome />
+      <Hello />
+      <Hellohi />
     </div>
   );
 }
