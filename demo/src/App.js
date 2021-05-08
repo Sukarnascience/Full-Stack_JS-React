@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
-import greet from './components/greet';
-import {welcome} from './components/welcome';
+import Greet from './components/greet';
+import Welcome from './components/welcome';
 import Typical from 'react-typical';
 //import React,{Component} from 'react';
 //import {greet} from './components/greet';
@@ -28,8 +28,8 @@ function App() {
           loop={Infinity}
           wrapper="p"
         />
-      <greet />
-      <welcome />
+      <Greet />
+      <Welcome />
     </div>
   );
 }

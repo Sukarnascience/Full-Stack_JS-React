@@ -4,7 +4,8 @@ function greet(){
     return <h1>Hello Sukarna Jana</h1>
 }
 */
-const greet = () => (<h3>Hello Sukarna Jana</h3>);
+const Greet = () => (
+    <h3>it's Stateless Function Component</h3>);
 
-export default greet;
+export default Greet;
 // export const greet = () => <h1>Hello Sukarna Jana</h1>

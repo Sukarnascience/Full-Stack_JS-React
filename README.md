@@ -42,4 +42,19 @@ class welcome extends React.Component(){
 }
 ```
 
+To use your Component in other file : \
+```js
+import Greet from './components/greet'; // file location
+import Welcome from './components/welcome'; // file location
+
+function App() {
+  return (
+    <div className="App">
+      <Greet />
+      <Welcome />
+    </div>
+  );
+}
+```
+
 License Under : [LICENSE](LICENSE)

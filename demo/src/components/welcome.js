@@ -1,9 +1,9 @@
 import React,{Component} from 'react';
 
-class welcome extends Component{
+class Welcome extends Component{
     render(){
-        return (<h3>Hi, its Class Components</h3>);
+        return (<h3>it's Stateful Class Components</h3>);
     }
 }
 
-export default welcome; 
+export default Welcome; 
