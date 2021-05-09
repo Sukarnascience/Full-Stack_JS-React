@@ -94,8 +94,86 @@ function App() {
     3. camelCase property nameing convention
       a. onclick -> onClick
       b. tabindex-> tabindex
+* ## Use of Props and State
+  * ### Props:
+    props -> properties is the optional input that your components
+    can accept its ... also the components are dianamic...
+    > Porps are immutable
+    eg: In App.js
+    ```js
+    import MyPropsFun from '<--path-->';
+    // and in app function use the tag
+    <MyPropsFun name="Sukarna Jana" age="17+">
+      Hii its me the childern
+    </MyPropsFun>
+    ```
+    Now lets make it in suprate file:\
+    Using : Function....
+    learnProps.js
+    ```js
+    import React from 'React';
+    const MyPropFun = (props) => {
+      console.log()
+      return(
+        <div>
+          <h1>Welcome {props.name}</h1>
+          <h2>Your Age is :{props.age}</h1>
+        </div>
+      )
+    }
+    export default MyPropFun;
+    ```
+    Using : Class....
+    learnProps.js
+    ```js
+    import React,{Component} from 'React';
+    class MyPropsFun extends Component{
+      render(){
+        return(
+          <div>
+            <h1>Welcome {this.props.name}</h1>
+            <h2>Your Age is :{this.props.age}</h1>
+          </div>
+        )
+      }
+    }
+    export default MyPropsFun;
+    ```
+  * ### State:
+    state is managed with in the component and varibles declared in the funcation body
+    > its mutable (State can be changed)
+    eg: learnstate.js
+    ```js
+    import React,{Component} from 'React';
+    class MyStateFun extends Component{
+      constructor(){
+        super()
+        this.state = {
+          message:"Give us a star"
+        }
+      }
+      changeDataOut(){
+        this.setState({
+          message:"Thanks Your Liking me"
+        })
+      }
+      render(){
+        return(
+          <div>
+            <h1>{this.state.message}</h1>
+            <button onClick={()=>this.changeDataOut()}>Like</button>
+          </div>
+        )
+      }
+    }
+    export default MyStateFun;
+    ```
+    and in App.js
+    ```js
+    import MyStateFun from '<--path-->';
+    // and in App function 
+    <MyStateFun />
+    ```
 
-
-export default Hello;
 
 License Under : [LICENSE](LICENSE)

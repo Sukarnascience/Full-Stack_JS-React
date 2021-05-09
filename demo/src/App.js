@@ -1,10 +1,15 @@
 import './App.css';
 import React from 'react';
+
+import Typical from 'react-typical';
+
 import Greet from './components/greet';
 import Welcome from './components/welcome';
-import Typical from 'react-typical';
 import Hello from './components/hello';
 import Hellohi from './components/hellohi';
+import MyPropsFun from './components/learnProps';
+import MyStateFun from './components/learnstate';
+
 //import React,{Component} from 'react';
 //import {greet} from './components/greet';
 
@@ -34,6 +39,10 @@ function App() {
       <Welcome />
       <Hello />
       <Hellohi />
+      <MyPropsFun name="Sukarna Jana" age="17+">
+        This is Childern Of MyPropsFun Tag
+      </MyPropsFun>
+      <MyStateFun/>
     </div>
   );
 }
