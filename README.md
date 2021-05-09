@@ -118,6 +118,7 @@ function App() {
         <div>
           <h1>Welcome {props.name}</h1>
           <h2>Your Age is :{props.age}</h1>
+          {props.childern}
         </div>
       )
     }
@@ -133,6 +134,7 @@ function App() {
           <div>
             <h1>Welcome {this.props.name}</h1>
             <h2>Your Age is :{this.props.age}</h1>
+            {props.childern}
           </div>
         )
       }
