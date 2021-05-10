@@ -9,6 +9,7 @@ import Hello from './components/hello';
 import Hellohi from './components/hellohi';
 import MyPropsFun from './components/learnProps';
 import MyStateFun from './components/learnstate';
+import ClickCount from './components/incrementCount';
 
 //import React,{Component} from 'react';
 //import {greet} from './components/greet';
@@ -43,6 +44,7 @@ function App() {
         This is Childern Of MyPropsFun Tag
       </MyPropsFun>
       <MyStateFun/>
+      <ClickCount/>
     </div>
   );
 }

@@ -176,6 +176,70 @@ function App() {
     // and in App function 
     <MyStateFun />
     ```
+* ## Use Of setState method:
+
+  to understand a do and dont with state and setState let us see \
+  eg : lets check by increment on every click
+  ```js
+  import React,{Component} from 'react'
+
+  class ClickCount extends Component{
+      constructor(){
+          super()
+          this.state={
+              count:0
+          }
+      }
+      increment(){
+          this.setState({
+              count:this.state.count + 1
+          })
+      }
+      render(){
+          return(
+              <div>
+                  <p>You have clicked this button : {this.state.count}</p>
+                  <button onClick={()=>this.increment()}>Click</button>
+              </div>
+          )
+      }
+  }
+  ```
+  * When ever we are going to change the set dont do directly ib a function
+    you can change the state when its under constructor to change the state 
+    in a function you need to use setState method
+  * setState method has 2 parameters 1st is for the object and 2nd is for 
+    call back function
+  * > if you see console.log of state value it will be the previous state
+    So, if you need to execute some code only after the state has been 
+    updated then you need to use call back function to apply this
+  * let us assume i want to increment by 5 in above example
+    ```js
+    incrementFive(){
+      increment()
+      increment()
+      increment()
+      increment()
+      increment()
+    }
+    ```
+    but it is not going to increment 5 times because react render it together 
+    so for that...
+    ```js
+    increment(){
+      // if you need multiple parameter then use (pervState,~,~)
+      this.setState(prevState=>({
+        count:pervState.count+1
+      }))
+    }
+    ```
+    So, if you do now then you are going to increment 5 times 
+  * ### Summary
+    * always make use of setState and never modify the state directly
+    * code has will be executed after the state has been updated so Place
+      that code in the call back function which is our 2 argument in setState method
+    * when you have to update state based on the pervious state value then pass in a 
+      function as a 1st argument of setState method which is known as obejct
 
 
 License Under : [LICENSE](LICENSE)
