@@ -11,6 +11,9 @@ import MyPropsFun from './components/learnProps';
 import MyStateFun from './components/learnstate';
 import ClickCount from './components/incrementCount';
 import LearnDestructuring from './components/learndestructuring';
+import LearnEventHandler from './components/learneventHandle';
+import Eventbindingdata from './components/eventbinding';
+import Parents from './components/parents';
 
 //import React,{Component} from 'react';
 //import {greet} from './components/greet';
@@ -47,6 +50,9 @@ function App() {
       <MyStateFun/>
       <ClickCount/>
       <LearnDestructuring firstName = "sukarna" lastName = "jana"/>
+      <LearnEventHandler/>
+      <Eventbindingdata/>
+      <Parents/>
     </div>
   );
 }

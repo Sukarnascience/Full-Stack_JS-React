@@ -274,5 +274,32 @@ function App() {
         }
       }
       ```
+* ## Event Handling
+  * any web application you create sometimes its has user interface...
+  * when the user intaractact with your application then the evets are fired\
+    eg:
+    1. mouse click
+    2. mouse over
+    3. keypress
+    4. change event \
+    etc.... many more
+  * react events named using camel case
+  > ```clickHandler```: is a function
+  > ```clickHandler()```: is a function call
+  * eg: if we use this :- ```clickHandler()``` on button click function then 
+    it's means the function will already is called, and when we click into that 
+    button nothing will happen...
+    > event handler is a function not a function call
+  eg:
+  ```js
+  class LearnEventHandler extends Component{
+    changeDataOut(){
+      console.log("event has been handled")
+    }
+    render(){
+      return(<button onClick={this.changeDataOut}>Event Handler</button>)
+    }
+  }
+  ```
 
 License Under : [LICENSE](LICENSE)
