@@ -393,9 +393,38 @@ function App() {
     So we will create two files one will be parents.js another will be children.js\
     parents.js
     ```js
+    import Childern from './childern';
+
+    class Parents extends Component{
+        constructor(props){
+            super()
+            this.state = {
+                defmsg:"Dear,"
+            }
+            this.callpopupalert = this.callpopupalert.bind(this)
+        }
+        callpopupalert(){
+            alert(`Hello ${this.state.defmsg}`)
+        }
+        */
+        render(){
+            return(
+                <div>
+                    <Childern popupalert = {this.callpopupalert}/>
+                </div>
+            )
+        }
+    }
     ```
     children.js
     ```js
+    function Childern(props){
+        return(
+            <div>
+                <button onClick={props.popupalert}>Alert plz</button>
+            </div>
+        )
+    }
     ```
     > So if you need to pass a parameter by calling parent method you can do like:\
     In parents.js ```<button onClick={()=> props.popupalert('Sukarna')}>alert</button>```\
