@@ -240,6 +240,39 @@ function App() {
       that code in the call back function which is our 2 argument in setState method
     * when you have to update state based on the pervious state value then pass in a 
       function as a 1st argument of setState method which is known as obejct
-
+* ## Destructuring props and state
+  * Destructuring is an es6 feature thats make its possible to unpack variables
+    from arrays and  properties from object into distinct variables
+  * in react restructuring props and state improves code readability
+  * there are 2 ways that we can use in functional components are:
+    1. Structuring in the parameters
+      Eg: in App.js import our examble file and type
+      ```js 
+        <LringStructur name="sj" age=17/>
+      ``` 
+      and in our example file .js
+      ```js
+        const LringStructur = ({name,age})=> {
+          return(<p>Hello {name} and your age is {age}</p>)
+        }
+      ```
+    2. Destructuring in function body   
+      ```js
+        const LringStructur = props => {
+          const {name,age} = props
+          return(<p>Hello {name} and your age is {age}</p>)
+        }
+      ```
+      in Class components
+      ```js
+      class welcome extends Components {
+        render(){
+          const {name,age} = this.props
+          // its same in state type also 
+          const {state1,state2} = this.state
+          return(<p>Hello {name} and your age is {age}</p>)
+        }
+      }
+      ```
 
 License Under : [LICENSE](LICENSE)

@@ -10,6 +10,7 @@ import Hellohi from './components/hellohi';
 import MyPropsFun from './components/learnProps';
 import MyStateFun from './components/learnstate';
 import ClickCount from './components/incrementCount';
+import LearnDestructuring from './components/learndestructuring';
 
 //import React,{Component} from 'react';
 //import {greet} from './components/greet';
@@ -45,6 +46,7 @@ function App() {
       </MyPropsFun>
       <MyStateFun/>
       <ClickCount/>
+      <LearnDestructuring firstName = "sukarna" lastName = "jana"/>
     </div>
   );
 }
