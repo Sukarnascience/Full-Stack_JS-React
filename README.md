@@ -385,5 +385,20 @@ function App() {
         )
       }
       ```
+* ## Methods as props
+  * Using parent component can pass down props to the childrens component but if a child
+    component wanted To communicate with the parents component then we still can use props
+    but this time we pass in a reference Tu to a method as props to the child component
+  * eg: I want to call a method in the parent component from a button in a child component
+    So we will create two files one will be parents.js another will be children.js\
+    parents.js
+    ```js
+    ```
+    children.js
+    ```js
+    ```
+    > So if you need to pass a parameter by calling parent method you can do like:\
+    In parents.js ```<button onClick={()=> props.popupalert('Sukarna')}>alert</button>```\
+    and In childrens.js ```popupalert(msg){alert(`Hello ${this.state.defmsg} ${msg}`)}```
 
 License Under : [LICENSE](LICENSE)
