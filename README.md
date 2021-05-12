@@ -301,5 +301,89 @@ function App() {
     }
   }
   ```
+* ## Binding Event Handlers
+  * reason of binding event handler is purely because of ```this.```
+    keyword in js file... it's not because of react
+  * eg: eventbind.js\
+    by creating a class and using event handler using ```this.```
+    keyword will be undefine with in a function
+  > you should have better knowledge of ```this.``` keyword use.
+  ```js
+  class MyStateFun extends Component{
+    constructor(){
+      super()
+      this.state = {
+        msg:"Give us a star"
+      }
+    }
+    changeDataOut(){
+      this.setState({
+        msg:"Thanks Your for Liking me"
+      })
+    }
+    render(){
+      return(
+        <div>
+          <p>{this.state.msg}</p>
+          <button onClick={this.changeDataOut}>Like me</button>
+        </div>            
+      )
+    }
+  }
+  ```
+  we will get a error that <b>this is undefine</b> because this is not define under a event handler
+  > ```this``` keyword is undefined in an event handler that is the reason why it's necessary to learn event binding react class component
+  * There are multiple types of event handlers list goes something like this:
+    1. Using bind keyword
+      ```<button onClick={this.changeDataOut.bind(this)}>Like me</button>```
+      Every update to the status cause the component to rerender and this in return brand new event handler on every render...\
+      > It can create a issue at component that content nested childrens component
+    2. Use arrow function in render method
+      ```<button onClick={()=>this.changeDataOut()}>Like me</button>```
+    3. binding the event handler in the construct as a post to binding in the rerender method
+      ```js
+      constructor(){
+        super()
+        this.state = {
+          msg:"Give us a star"
+        }
+        this.changeDataOut = this.changeDataOut.bind(this)
+      }
+      changeDataOut(){
+        this.setState({
+          msg:"Thanks Your for Liking me"
+        })
+      }
+      render(){
+        return(
+          <div>
+            <p>{this.state.msg}</p>
+            <button onClick={this.changeDataOut}>Like me</button>
+          </div>            
+        )
+      }
+      ```
+    4. Using a arrow function as a class property
+      ```js
+      constructor(){
+        super()
+        this.state = {
+          msg:"Give us a star"
+        }
+      }
+      changeDataOut=()=>{
+        this.setState({
+          msg:"Thanks Your for Liking me"
+        })
+      }
+      render(){
+        return(
+          <div>
+            <p>{this.state.msg}</p>
+            <button onClick={this.changeDataOut}>Like me</button>
+          </div>            
+        )
+      }
+      ```
 
 License Under : [LICENSE](LICENSE)

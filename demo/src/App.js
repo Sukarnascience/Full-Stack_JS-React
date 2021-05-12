@@ -23,9 +23,7 @@ import Parents from './components/parents';
  */
 
 function App() {
-  let data = "Hi my name is sukarna jana and this \
-    is my first react project and i am learning \
-    new things every day ;)"
+  let data = "Hi it's me sukarna jana and great to see you here ;)"
   return (
     <div className="App">
       <h1><code>
