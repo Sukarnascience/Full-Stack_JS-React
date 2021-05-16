@@ -478,4 +478,94 @@ function App() {
       }
       ```
 
+* ## List Rendaring
+  * sometimes you might have to display list of datas...
+  * in JS we have a *map method* to itterate over array and return with changes
+  * ### quick look of ```map``` method
+    * the *map()* method creates a new array with the results of calling a provided function
+      on every elements in the array
+      ```js
+      var myarray = [1,2,3,4]
+      const mapping = myarray.map(x => x*2)
+      console.log(mapping)
+      // Output : [2,4,6,8]
+      ```
+  * we can handel list in some ways like :
+    1. ```js
+      const name = ["Sukarna","spoothi","poomee"]
+      return(
+        <div>
+          <p>{name[0]}</p>
+          <p>{name[1]}</p>
+          <p>{name[2]}</p>
+        </div>
+      )
+      ```
+    2. ```js
+      const name = ["Sukarna","spoothi","poomee"]
+      return(
+        <div>
+          {
+            data = name.map(x => <p>{x}</p>)
+          }
+        </div>
+      )
+      // OR
+      const data = name.map(x => <p>{x}</p>)
+      return(<div>{data}</div>)
+      ``` 
+    3. if you have multiple data then 
+      ```js
+      const data=[
+        {
+          id:1,
+          name:'Sukarna Jana',
+          age:17
+        },
+        {
+          id:2,
+          name:'Spoorthi S',
+          age:17
+        },
+        {
+          id:3,
+          name:'Poornima',
+          age:17
+        }
+      ]
+      const datalist = data.map(x => (
+        <p>Name:{x.name}, Age:{x.age}</p>
+      ))
+      ```
+      > But doing in this way you will see a error in console
+      ```Each child in an array or interalor should have a unique "key" porps```
+
+  * So, we need to see the unique data so as we know our id is unique
+    ```js
+    const datalist = data.map(x => (
+      <p key={x.id}>Name:{x.name}, Age:{x.age}</p>
+    ))
+    ```
+    > key is a reserved props so you can't use 
+
+    * ```key``` is a special string attribute you need to include when creating lists as elements
+    * key gives the element a stable indentity
+    * keys help react to identify which items have changed are added or are removed
+    * help in efficient update at the user interface
+
+  * ### Index as key
+    > avoid if possible
+
+    * we can use index of element in the key
+      ```js
+      const datalist = data.map((x,index) => (
+          <p key={index}>{x}</p>
+      ))
+      ```
+    1. the items in your list do not have a unique id (it you have someting unique
+      then use that only as a key)
+    2. the list is a static list and will not change (never add item to the list, removing
+      items from the list)
+    3. the list will never be reordered or filtred
+
 License Under : [LICENSE](LICENSE)

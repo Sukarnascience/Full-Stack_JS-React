@@ -15,6 +15,7 @@ import LearnEventHandler from './components/learneventHandle';
 import Eventbindingdata from './components/eventbinding';
 import Parents from './components/parents';
 import MyCondition from './components/workwithconditon';
+import MyList from './components/workingwithList';
 
 
 //import React,{Component} from 'react';
@@ -54,6 +55,7 @@ function App() {
       <Eventbindingdata/>
       <Parents/>
       <MyCondition/>
+      <MyList/>
     </div>
   );
 }
