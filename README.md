@@ -430,4 +430,52 @@ function App() {
     In parents.js ```<button onClick={()=> props.popupalert('Sukarna')}>alert</button>```\
     and In childrens.js ```popupalert(msg){alert(`Hello ${this.state.defmsg} ${msg}`)}```
 
+* ## Conditional Rendering
+  * when you build a react application you may need to show or hide the HTML based on the conditon 
+  * there are different type of contion in react:
+    1. if/else
+      it's like :\
+      create a class component and in that we will change the state based on if/else...
+      ```js
+      // inside constructor...
+      this.state = { permition: false }
+      render(){
+        if(this.state.permition){
+          return <p>wow you are allowed</p>
+        } else{
+          return <p>sorry you are not allowed</p>
+        }
+      }
+      ```
+    2. element variables
+      ```js
+      render(){
+        let msg
+        if(this.state.permition){
+          msg =  <p>wow you are allowed</p>
+        } else{
+          msg = <p>sorry you are not allowed</p>
+        }
+        return(<div>{msg}</div>)
+      }
+      ```
+    3. ternary conditionl operator
+      * we can use this under JSX
+      ```js
+      render(){
+        return(
+          this.state.permition ? <p>wow</p> : <p>oops</p>
+        )
+      }
+      ```
+    4. short circuit operator
+      * do or just leave 
+      ```js
+      render(){
+        return(
+          this.state.permition && <p>wow</p>
+        )
+      }
+      ```
+
 License Under : [LICENSE](LICENSE)

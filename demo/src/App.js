@@ -14,6 +14,8 @@ import LearnDestructuring from './components/learndestructuring';
 import LearnEventHandler from './components/learneventHandle';
 import Eventbindingdata from './components/eventbinding';
 import Parents from './components/parents';
+import MyCondition from './components/workwithconditon';
+
 
 //import React,{Component} from 'react';
 //import {greet} from './components/greet';
@@ -51,6 +53,7 @@ function App() {
       <LearnEventHandler/>
       <Eventbindingdata/>
       <Parents/>
+      <MyCondition/>
     </div>
   );
 }
