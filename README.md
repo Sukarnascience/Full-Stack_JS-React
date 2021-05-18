@@ -568,4 +568,61 @@ function App() {
       items from the list)
     3. the list will never be reordered or filtred
 
+* ## Styling and CSS Basic
+  * styling React Components
+    1. CSS Stylesheets
+      file: myStyle.css
+      ```css
+      .myMainstyle{
+        color:#ff00ff
+      }
+      ```
+      file: MainApp.js
+      ```js
+      import './myStyle.css'
+      function App(props){
+        let styleType = props.primary? 'myMainstyle':''
+        return(
+          <p className={styleType}>Hello</p>
+          //or
+          <p className='myMainstyle'>Hello</p>
+        )
+      }
+      ```
+    2. Inline Styling
+      in react inline styles are not specify Instead they are specified object whose keys are camelcase version style name and the value is usually a string
+      eg:
+      ```js
+      function App(){
+        const styleType = {
+          fontSize:'50px',
+          color:'red'
+        }
+        return(
+          <p className={styleType}>Hello</p>
+        )
+      }
+      ```
+    3. CSS Modules
+      The module CSS files are be like : ```FILENAME.module.css```
+      If we create a stylesheet without a module then it can be implement in all the child component also but if you need to be specific to particular then you need to use CSS module to implement in particular component
+      file: myStyle.module.css
+      ```css
+      .myMainstyle{
+        color:#ff00ff
+      }
+      ```
+      file: MainApp.js
+      ```js
+      import style from './myStyle.module.css'
+      function App(){
+        return(
+          <p className={style.myMainstyle}>Hello</p>
+        )
+      }
+      ```
+
+    4. CSS in JS Libaries
+      > not going to learn now
+
 License Under : [LICENSE](LICENSE)

@@ -17,6 +17,7 @@ import Parents from './components/parents';
 import MyCondition from './components/workwithconditon';
 import MyList from './components/workingwithList';
 
+import myStyleModule from './components/myStyle.module.css';
 
 //import React,{Component} from 'react';
 //import {greet} from './components/greet';
@@ -26,10 +27,10 @@ import MyList from './components/workingwithList';
  */
 
 function App() {
-  let data = "Hi it's me sukarna jana and great to see you here ;)"
+  const data = "Hi it's me sukarna jana and great to see you here ;)"
   return (
     <div className="App">
-      <h1><code>
+      <h1 className={myStyleModule.mycss}><code>
         <Typical
           steps={['', 1000, 'Hello Sukarna Jana', 2000]}
           loop={Infinity}
@@ -40,6 +41,7 @@ function App() {
           steps={['',2000, data, 2000]}
           loop={Infinity}
           wrapper="p"
+          className = {myStyleModule.mycssbg}
         />
       <Greet />
       <Welcome />
