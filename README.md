@@ -491,7 +491,8 @@ function App() {
       // Output : [2,4,6,8]
       ```
   * we can handel list in some ways like :
-    1. ```js
+    1. 
+      ```js
       const name = ["Sukarna","spoothi","poomee"]
       return(
         <div>
@@ -501,7 +502,8 @@ function App() {
         </div>
       )
       ```
-    2. ```js
+    2. 
+      ```js
       const name = ["Sukarna","spoothi","poomee"]
       return(
         <div>
