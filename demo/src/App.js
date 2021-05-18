@@ -16,6 +16,7 @@ import Eventbindingdata from './components/eventbinding';
 import Parents from './components/parents';
 import MyCondition from './components/workwithconditon';
 import MyList from './components/workingwithList';
+import MainForm from './components/submitForm';
 
 import myStyleModule from './components/myStyle.module.css';
 
@@ -43,6 +44,7 @@ function App() {
           wrapper="p"
           className = {myStyleModule.mycssbg}
         />
+      <MainForm/>
       <Greet />
       <Welcome />
       <Hello />
