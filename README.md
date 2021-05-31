@@ -37,7 +37,7 @@ function welcome(props){
 example for Class Component : \
 greet.js
 ```js
-class welcome extends React.Component(){
+class welcome extends Component{
     render(){
         return <h1> Hello, {this.props.name} </h1>;
     }
@@ -710,5 +710,153 @@ function App() {
       }
   }
   ```
+* ## LifeCycle Methods
+  * ### Mounting
+    * mounting lifecycle are called when an instance of a component is being created and inserted 
+      into the DOM \
+      eg: ```constructor```,```static getDerivedStateFromProps```,```render``` and ```componentDidMount```
+    * ```constructor(props)``` 
+      * A special function that will get called whenever a new components is created 
+      * used for initilizing state,binding the event handler
+      * do not cause side effects eg:- HTTP Requests.
+      * when you create your own components call - ```super(props)``` & directly overwrite ```this.state```
+    * ```static getDerivedStateFromProps(props,state)``` (rerely use lifecycle mount)
+      * is used when the state of the component depends on changes in props over time.
+      * used for set state (need to return object that represent the new state of the components)
+      * do not cause side effect eg:- HTTP requests.
+    * ```render()```
+      * only required method
+      * used for read props & states and return JSX
+      * do not change states or interact with DOM or make ajax calls
+      * children components lifecycle methods are also executed
+    * ```componentDidMount()```
+      * call only once in the whole life cycle of a given component
+      * it is invoked immediatly after a component and all its children components have been render fo the DOM
+      * used for cause side effect eg:- Interact with the DOM or perform any ajax calls to loud data
+    * In CODES its look like 
+      ```js
+      //create a class
+        constructor(props){
+          super(props)
+          this.state={
+            data:"Hi"
+          }
+          /* <--- Our Lifecycle A ---> */
+        }
+      static getDerivedStateFromProps(props,state){
+        /* <--- Our Lifecycle B ---> */
+        return null
+      }
+      componentDidMount(){
+        /* <--- Our Lifecycle D ---> */
+      }
+      return(){
+        /* <--- Our Lifecycle C ---> */
+        return <p> hi </p>
+      }
+      ```
+      if a component has a child component thin the flow will be :- \
+      ```js
+      /* <--- Our Lifecycle A1 ---> */
+      /* <--- Our Lifecycle B1 ---> */
+      /* <--- Our Lifecycle C1 ---> */
+      /* <--- Our Lifecycle A2 ---> */
+      /* <--- Our Lifecycle B2 ---> */
+      /* <--- Our Lifecycle C2 ---> */
+      /* <--- Our Lifecycle D2 ---> */
+      /* <--- Our Lifecycle D1 ---> */
+      ```
+  * ### Updating
+    * when a component is being re-rendered as a result of changes to either its props or state\
+      eg: ```getSnapshotBeforeUpdate```,```static getDerivedStateFromProps```,
+      ```shouldComponentUpdate```,```render``` and ```componentDidUpdate```
+    * ```static getDeriveStateFromProps(props,state)```
+      * this is a statis method which recive props and state as a parameter and has to return null or object - repesent state of the component
+      * method is called everytime a component is re-rendered
+      * is used to set the state
+      * do not cause any side effect eg: HTTP requests
+    * ```shouldComponentUpdate(next props,next state)```
+      * detects is the component should re-render or not\
+      ( Defalt: class component re-render on every changes )\
+      So, to prevent that we use this
+      * performance optimization
+      * do not cause side effect eg: HTTP request...
+      * calling the setState method
+    * ```render()```
+      * only required method 
+      * read props & state and return JSX
+      * do not change state or interact with DOM or make ajax calls
+    * ```getSnapshotBeforeUpdate(perv Props, prev State)```
+      * called right before the changes from the virtual DOM are to be certified in DOM
+      * capture some information from the DOM
+      * method will either return null or return a value
+      * render value will be passed as the 3rd parameter to the next method
+    * ```componentDidUpdate(prev Props, prev State, snapshot)```
+      * called after the render is finished  in the re-render cycles
+      * cause side effects
+    * In CODES its look like 
+      ```js
+      //create a class
+        constructor(props){
+          super(props)
+          this.state={
+            data:"Hi"
+          }
+        }
+      static getDerivedStateFromProps(props,state){
+        /* <--- Our Lifecycle A ---> */
+        return null
+      }
+      shouldComponentUpdate(){
+        /* <--- Our Lifecycle B ---> */
+        return true
+      }
+      getSnapshotBeforeUpdate(prev props,prev state){
+        /* <--- Our Lifecycle D ---> */
+        return null
+      }
+      componentDidUpdate(){
+        /* <--- Our Lifecycle E ---> */
+      }
+      change=()=>{
+        this.setState({
+          data:"hello"
+        })
+      }
+      return(){
+        /* <--- Our Lifecycle C ---> */
+        return <button onCLick={this.change}>State changes</button>
+      }
+      ```
+      if there is a child component too then
+      ```js
+      /* <--- Our Lifecycle A1 ---> */
+      /* <--- Our Lifecycle B1 ---> */
+      /* <--- Our Lifecycle C1 ---> */
+      /* <--- Our Lifecycle A2 ---> */
+      /* <--- Our Lifecycle B2 ---> */
+      /* <--- Our Lifecycle C2 ---> */
+      /* <--- Our Lifecycle D2 ---> */
+      /* <--- Our Lifecycle D1 ---> */
+      ```
+      if once both child & parents are done then ```getSnapshotBeforeUpdate(perv Props, prev State)``` will be
+      ```js
+      //...
+      /* <--- Our Lifecycle D2 ---> */
+      /* <--- Our Lifecycle E2 ---> */
+      /* <--- Our Lifecycle D1 ---> */
+      /* <--- Our Lifecycle E1 ---> */
+      ```
+  * ### Unmounting
+    * when a component is being removed from DOM eg: ```componentWillUnmount```
+    * ```componentWillUnmount```
+      * method is invoked immediately before a component is unmounted and distroyed
+      * (clean up task) cancelling any network requests removing event handaler, cancelling any subscription and also invalidating timers
+      * do not call the setState method
+  * ### Error Handaling
+    * when there is an error during rendering in a lifecycle method or in the constructor of any child component eg: ```static getDerivedStateFromError``` and ```componentDidCatch``` 
+    * ```static getDerivedStateFromError(error)```  
+    * ```componentDidCatch(error,info)```
 
-License Under : [LICENSE](LICENSE)
+
+License Under : [MIT LICENSE](LICENSE)
