@@ -942,5 +942,117 @@ function App() {
         </tr>
       </React.Fragment>
       ```
+  * ## Pure components
+    * to make a pure components: 
+      ```js
+      import React,{PureComponent} from 'react'
+      class MyPureCom extends PureComponent{
+        /*
+         * Your Other code
+         */
+      }
+      ```
+    * to understand more properly we will make 3 files
+      1. Parent Component
+        ```js
+        import React,{Component} from 'react';
+        import MyPureComp from './MyPureComp';
+        import MyRegularComp from './MyRegularComp';
+
+        class ParentOfPureRegular extends Component{
+            constructor(props){
+                super(props)
+                this.state={
+                    count:0
+                }
+            }
+            componentDidMount(){
+                setInterval(() => {
+                    this.setState({
+                        count: 0
+                    })
+                },2000)
+            }
+            render(){
+                console.log("this is the Parent of pure and regular component")
+                return(
+                    <div>
+                        <h3>Parent of pure and regular component</h3>
+                        <MyPureComp data={this.state.count}/>
+                        <MyRegularComp data={this.state.count}/>
+                    </div>
+                )
+            }
+        }
+        ```
+      2. Pure component
+        ```js
+        import React,{PureComponent} from 'react';
+
+        class MyPureComp extends PureComponent{
+            render(){
+                console.log("Pure Component is re-rendered")
+                return(
+                    <p>This Pure Component has been re-render {this.props.data} (See in console)</p>
+                )
+            }
+        }
+
+        export default MyPureComp;
+        ```
+      3. Regular Component
+        ```js
+        import React,{Component} from 'react';
+
+        class MyRegularComp extends Component{
+            render(){
+                console.log("Regular Component is re-rendered")
+                return(
+                    <p>This Regular Component has been re-render {this.props.data} (See in console)</p>
+                )
+            }
+        }
+
+        export default MyRegularComp;        
+        ```
+    * <table>
+        <tr>
+          <th>Regular Component</th>
+          <th>Pure Component</th>
+        </tr>
+        <tr>
+          <td>* A regular component does not implement the ```shouldComponentUpdate()``` method. Its always return true as default</td>
+          <td>* A pure component on other hand implements ```shouldComponentUpdate()``` method with a shallow propsvand state components</td>
+        </tr>
+      </table>
+    * ### Shallow Comparison (we will call as : SC)
+      * #### Primitive Type (num,str,boolen)
+        * a SC b return true if a and b have the same value and are of same types\
+        eg: string: 'SJ' SC string: 'SJ' returns true
+      * #### Complex Types (object,array...)
+        * a SC b returns true if a & b reference to exact same object\ eg:
+        ```js
+        var a = [1,2,3];
+        var b = [1,2,3];
+        var c = a;
+        var ab_eq = (a===b); //false
+        var ac_eq = (a===c); //true
+
+        /* another example */
+
+        var a = {x:1,y:2};
+        var b = {x:1,y:2};
+        var c = a;
+        var ab_eq = (a===b); //false
+        var ac_eq = (a===c); //true
+        ```
+      * SC of prevState with current State\
+        SC of prevProps with current Props\
+        if there is a difference they re-render component
+      * if parents not re-render then childeren will also not re-render
+      * never mutate the state, always return a new object that reflects the new state
+      * #### Pure component : if there is no difference the component is not re-rendering
+        - performence Boost
+        - its a good idea to ensure that all the childern components are also pure to avoide unexpacted behaviour
 
 License Under : [MIT LICENSE](LICENSE)

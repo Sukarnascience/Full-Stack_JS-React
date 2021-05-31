@@ -18,6 +18,7 @@ import MyCondition from './components/workwithconditon';
 import MyList from './components/workingwithList';
 import MainForm from './components/submitForm';
 import MyTable from './components/TableHead';
+import ParentOfPureRegular from './components/ParentOfPureRegular';
 
 import myStyleModule from './components/myStyle.module.css';
 
@@ -62,6 +63,7 @@ function App() {
       <MyCondition/>
       <MyList/>
       <MyTable/>
+      <ParentOfPureRegular/>
     </div>
   );
 }
