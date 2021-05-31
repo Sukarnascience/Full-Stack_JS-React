@@ -858,5 +858,89 @@ function App() {
     * ```static getDerivedStateFromError(error)```  
     * ```componentDidCatch(error,info)```
 
+* ## Fragments
+  * A common pattern in react is for a component to render multiple elements 
+  * fragments let you group a list of children without adding extra nodes to the DOM
+  * eg:
+    ```js
+    function Mydata(){
+      return(
+        <div>
+          <h3> Data 1 </h3>
+          <p> Data 2 </p>
+        </div>
+      )
+    }
+    // we commenly wright in this way but this is adding a useless tag 
+    /*
+     * if we inspect app.js or browser
+     * <div> <- of app.js
+     *  <div> <- of components
+     *   <h3> Data 1 </h3>
+     *   <p> Data 2 </p>
+     *  </div>
+     * </div>
+     */
+    ```
+    SO, to get rid of that extra ```<div>``` tag
+    ```js
+    function Mydata(){
+      return(
+        <React.Fragment>
+          <h3> Data 1 </h3>
+          <p> Data 2 </p>
+        </React.Fragment>
+      )
+    }
+    ```
+    * more practical use will be like:
+    > create 2 files
+    * file1.js
+      ```js
+      <div>
+        <h2>Table:-</h2>
+        <table>
+          <tbody>
+            <tr>
+              <th>Name</th>
+              <th>Relation</th>
+              <th>DOB</th>
+            </tr>
+            <file2/>
+          </tbody>
+        </table>
+      </div>
+      ```
+    * file2.js
+      ```js
+      //if we use
+      <div>
+        <tr>
+          <td>Sukarna Jana</td>
+          <td>Author of this page</td>
+          <td>19-09-2003</td>
+        </tr>
+        <tr>
+          <td>Spoorthi S</td>
+          <td>Author's Best Friend</td>
+          <td>05-08-2003</td>
+        </tr>
+      </div>
+      ```
+      then we will get a error on console because in table child component should not have ```<div>``` in between SO, its wrong then ```<React.Fragment>``` comes handy
+      ```js
+      <React.Fragment>
+        <tr>
+          <td>Sukarna Jana</td>
+          <td>Author of this page</td>
+          <td>19-09-2003</td>
+        </tr>
+        <tr>
+          <td>Spoorthi S</td>
+          <td>Author's Best Friend</td>
+          <td>05-08-2003</td>
+        </tr>
+      </React.Fragment>
+      ```
 
 License Under : [MIT LICENSE](LICENSE)

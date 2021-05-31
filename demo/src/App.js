@@ -17,6 +17,7 @@ import Parents from './components/parents';
 import MyCondition from './components/workwithconditon';
 import MyList from './components/workingwithList';
 import MainForm from './components/submitForm';
+import MyTable from './components/TableHead';
 
 import myStyleModule from './components/myStyle.module.css';
 
@@ -60,6 +61,7 @@ function App() {
       <Parents/>
       <MyCondition/>
       <MyList/>
+      <MyTable/>
     </div>
   );
 }
