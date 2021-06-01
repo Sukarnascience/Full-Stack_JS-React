@@ -1055,4 +1055,27 @@ function App() {
         - performence Boost
         - its a good idea to ensure that all the childern components are also pure to avoide unexpacted behaviour
 
+* ## Memo 
+  > version 16.6 above
+  * Pure component only re-render the class component when their ia a difference in shallow comparison of props/states
+  * prue component only work with class based component
+  * to use in function component the same feature then ```React.memo``` comes in place
+  * memo(function) == PureComponent(class)
+  * eg:- ```MyMemoComp.js```
+    ```js
+    import React from 'react';
+
+    function MyMemoComp({data}){
+        console.log("Memo Component is re-rendered")
+        return(
+            <p>This Pure Component has been re-render {data} (See in console)</p>
+        )
+    }
+
+    export default React.memo(MyMemoComp);
+    ```
+    * in earlear code where parents component re-render in every 2sec. include this child 
+      ```<MyMemoComp data = {this.props.count} />```
+    * and when we see output memo is render onces and parents keep on re rendering
+  
 License Under : [MIT LICENSE](LICENSE)
