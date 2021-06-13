@@ -1213,5 +1213,36 @@ function App() {
       const FRInput = React.frowardRef((props,refrence)=>{
         return <input type="text" ref={refrence}/>
       })
+  * ## Portals
+    * Provide a way to render children into s DOM note exist outside the DOM higher key of parent component
+    * eg: So far we have only 1 DOM element node in HTML that we ware mounting in our react application
+    * if we see ```index.html``` we will get to see ```<div id='root'>...</div>```
+    * and in ```index.js``` we get to see:\
+      ```js
+      ReactDOM.render(<App/>,document.getElementById('root'));
+      ```
+    * portal provide the ability to break out of the DOM tree
+    * For creating our own lets create and understand by an example:
+    * (Create a DOM note which fall outside the root element)
+      - Step 1: (In ```index.html``` write)
+        ```<div id="MyCustomPortal">...</div>```
+      - Step 2: (lets create a new component) MyPortal.js
+        ```js
+        import React from 'react'
+        import ReactDOM from 'react-dom'
+
+        function MyPortal(){
+          return ReactDOM.createPortal(
+            <p>Woow i am outside 'root'</p>,
+            document.getElementById('MyCustomPortal')
+          )
+        }
+
+        export default MYPortal
+        ```
+      - Step 3: (Add in main File which is App.js)
+    * ReactDOM.createPortal(TAKES 2 PARAMETER)
+      - 1. JSX which you want to render
+      - 2. DOM note to mount the element
 
 License Under : [MIT LICENSE](LICENSE)

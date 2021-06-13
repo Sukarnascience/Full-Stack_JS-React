@@ -22,6 +22,7 @@ import ParentOfPureRegular from './components/ParentOfPureRegular';
 import MyRefsComp from './components/MyRefsComp';
 import FocusInput from './components/ParentOfFocusInput';
 import FRParentInput from './components/FRParentInput';
+import MyPortal from './components/MyPortal';
 
 import myStyleModule from './components/myStyle.module.css';
 
@@ -70,6 +71,7 @@ function App() {
       <MyRefsComp/>
       <FocusInput/>
       <FRParentInput/>
+      <MyPortal/>
     </div>
   );
 }
