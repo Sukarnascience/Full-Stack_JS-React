@@ -23,6 +23,8 @@ import MyRefsComp from './components/MyRefsComp';
 import FocusInput from './components/ParentOfFocusInput';
 import FRParentInput from './components/FRParentInput';
 import MyPortal from './components/MyPortal';
+import MyBFF from './components/MyBFF';
+import MyERRORBoundary from './components/MyERRORBoundary'; 
 
 import myStyleModule from './components/myStyle.module.css';
 
@@ -72,6 +74,12 @@ function App() {
       <FocusInput/>
       <FRParentInput/>
       <MyPortal/>
+      <MyERRORBoundary>
+        <MyBFF BFFName="spoorthi"/>
+      </MyERRORBoundary>
+      <MyERRORBoundary>
+        <MyBFF BFFName="nandan"/>
+      </MyERRORBoundary>
     </div>
   );
 }

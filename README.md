@@ -1244,5 +1244,101 @@ function App() {
     * ReactDOM.createPortal(TAKES 2 PARAMETER)
       - 1. JSX which you want to render
       - 2. DOM note to mount the element
+  * ## ERROR Boundary
+    * Error handling phase methods
+      - static getDerivedStateFromError(error)
+      - componentDidCatch(error,info)
+    * When there is a app crash it kept into a broken state (it's unmount component tree)
+    * we can catch a error in component tree and display a fall back UI
+    * a class component that implements either 1 or both of the lifecycle methods
+      - getDerivedStateFromError or componentDidCatch becomes an error boundary
+    * the static method getDerivedStateFromError method is used to render a fallback UI after an error is thrown and the componentDidCatch method is used to log error informantion 
+    * example: MyBFF.js
+      ```js
+      import React from 'react'
+      function MyBFF({BFFName}){
+        if(BFFName!='spoorthi'){
+          throw new Error(`No!, ${BFFName} is not authors BFF`)
+        }
+        return(
+          <p>Yea {BFFName} is Authors BFF</p>
+        )
+      }
+      //...
+      ```
+      and in main file (App.js)
+      ```js
+      <MyBFF BFFName="spoorthi"/>
+      <MyBFF BFFName="nandan"/>
+      ```
+      But the whole UI crash 
+    * we dont want this if a perticular component throus error only that component should back into UI and other component should not be effected
+    * so, MyERRORBoundary.js
+      ```js
+      import React,{Component} from 'react'
+
+      class MyERRORBoundary extends Component{
+          constructor(props){
+              super(props)
+              this.state={
+                  hasError:false
+              }
+          }
+
+          static getDerivedStateFromError(error){
+              return{
+                  hasError:true
+              }
+          }
+
+          componentDidCatch(error,info){
+              console.log(error)
+              console.log(info)
+          }
+
+          render(){
+              if(this.state.hasError){
+                  return <p>Ooops! Something went wrong</p>
+              }
+              return this.props.children
+          }
+      }
+
+      export default MyERRORBoundary;
+      ```
+      in MyBFF.js
+      ```js
+      import React from 'react'
+
+      function MyBFF({BFFName}){
+          if(BFFName!=='spoorthi'){
+              throw new Error(`No!, ${BFFName} is not authors BFF`)
+          }
+          return(
+          <p>Yea {BFFName} is Authors BFF</p>
+          )
+      }
+
+      export default MyBFF;
+      ```
+      in App.js
+      ```js
+      <MyERRORBoundary>
+        <MyBFF BFFName="spoorthi"/>
+      </MyERRORBoundary>
+      <MyERRORBoundary>
+        <MyBFF BFFName="nandan"/>
+      </MyERRORBoundary>
+      ```
+      - output will be : \
+      Yea spoorthi is Authors BFF \
+      No!, nandan is not authors BFF
+      > you will still see error because product is in developing stage so by clicking in ```x``` at corner you can see the actual output
+    * ### Summary
+      * error boundaries are react component that catch js error in their child component tree, log thoes error and display a fall-back UI
+      * A class component becomes an error boundary by defining either both of getDerivedStateFromError and componentDidCatch life cycle method
+      * the placement of the error boundary also metters as it controls it entire app should have the fall-back UI or just the component causing the problem
+      * provide a way to gracetully handle error in application code 
+
 
 License Under : [MIT LICENSE](LICENSE)
