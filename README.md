@@ -1150,5 +1150,35 @@ function App() {
           }
         }
         ```
+  * ### Refs with class components
+    * at the above topic we saw how to add refs to a normal HTML element like input element but its posible to add a refs in class component also
+      eg: File1Input.js
+      ```js
+      //create a class
+      //create a constructor
+      this.inputRef=React.createRef()
+      //create a method
+      focusInput(){
+        this.inputRef.current.focus()
+      }
+      //inside return
+      <input type="text" ref={this.inputRef}/>
+      ```
+      Now we will create a parent component File2FocusInput.js
+      ```js
+      import /*Your class name*/ from './FIle1Input'
+      //create a class
+      //inside constructor()
+      this.componentRef = React.createRef()
+
+      clickHandler = () =>{
+        this.componentRef.current.focusInput()
+        // focusInput() its came from child component
+      }
+      //inside return
+      </*Your class name*/ ref={this.componentRef}>
+      <button onClick={this.clickHandler}>
+      ```
+      So, output will be when even i click the button its get focus into the text box
 
 License Under : [MIT LICENSE](LICENSE)

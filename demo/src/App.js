@@ -20,6 +20,7 @@ import MainForm from './components/submitForm';
 import MyTable from './components/TableHead';
 import ParentOfPureRegular from './components/ParentOfPureRegular';
 import MyRefsComp from './components/MyRefsComp';
+import FocusInput from './components/ParentOfFocusInput';
 
 import myStyleModule from './components/myStyle.module.css';
 
@@ -66,6 +67,7 @@ function App() {
       <MyTable/>
       <ParentOfPureRegular/>
       <MyRefsComp/>
+      <FocusInput/>
     </div>
   );
 }
