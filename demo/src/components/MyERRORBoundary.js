@@ -1,4 +1,5 @@
 import React,{Component} from 'react'
+import myStyleModule from './myStyle.module.css';
 
 class MyERRORBoundary extends Component{
     constructor(props){
@@ -21,7 +22,7 @@ class MyERRORBoundary extends Component{
 
     render(){
         if(this.state.hasError){
-            return <p>Ooops! Something went wrong</p>
+            return <p className={myStyleModule.Some_error}>Ooops! Something went wrong</p>
         }
         return this.props.children
     }
