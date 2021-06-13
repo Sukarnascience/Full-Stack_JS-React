@@ -21,6 +21,7 @@ import MyTable from './components/TableHead';
 import ParentOfPureRegular from './components/ParentOfPureRegular';
 import MyRefsComp from './components/MyRefsComp';
 import FocusInput from './components/ParentOfFocusInput';
+import FRParentInput from './components/FRParentInput';
 
 import myStyleModule from './components/myStyle.module.css';
 
@@ -68,6 +69,7 @@ function App() {
       <ParentOfPureRegular/>
       <MyRefsComp/>
       <FocusInput/>
+      <FRParentInput/>
     </div>
   );
 }

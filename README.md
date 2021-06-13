@@ -1166,7 +1166,7 @@ function App() {
       ```
       Now we will create a parent component File2FocusInput.js
       ```js
-      import /*Your class name*/ from './FIle1Input'
+      import YourClassName from './FIle1Input'
       //create a class
       //inside constructor()
       this.componentRef = React.createRef()
@@ -1176,9 +1176,42 @@ function App() {
         // focusInput() its came from child component
       }
       //inside return
-      </*Your class name*/ ref={this.componentRef}>
+      <YourClassName ref={this.componentRef}>
       <button onClick={this.clickHandler}>
       ```
       So, output will be when even i click the button its get focus into the text box
+  * ### Forwording refs
+    * is a tecnic for automatickly passing a ref through a component to one of their child
+    * eg:\
+      Parent Component - FRParentInput.js
+      ```js
+      //import your child component
+      import FRInput from './FRInput'
+      import React, { Component } from 'react'
+
+      class FRParentInput extends Component{
+          constructor(props){
+              super(props)
+              this.inputRef = React.createRef()
+          }
+
+          clickMe = ()=>{
+              this.inputRef.current.focus()
+          }
+
+          render(){
+            return(
+              <FRInput ref={this.inputRef}/>
+              <button onClick={this.clickMe}>
+            )
+          }
+      }
+      ```
+      and in child component - FRInput.js
+      ```js
+      import React from 'react'
+      const FRInput = React.frowardRef((props,refrence)=>{
+        return <input type="text" ref={refrence}/>
+      })
 
 License Under : [MIT LICENSE](LICENSE)
