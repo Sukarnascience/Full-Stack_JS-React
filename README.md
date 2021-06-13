@@ -1339,6 +1339,125 @@ function App() {
       * A class component becomes an error boundary by defining either both of getDerivedStateFromError and componentDidCatch life cycle method
       * the placement of the error boundary also metters as it controls it entire app should have the fall-back UI or just the component causing the problem
       * provide a way to gracetully handle error in application code 
+  * ## Higher Order Components - HOC
+    * let me start with a counter example...\
+    eg: ClickCount.js
+    ```js
+    class ClickCounter extends Component{
+      constructor(props){
+        super(props)
+        this.state = {count:0}
+      }
+      incrementCount = () => {
+        this.setState(prevState =>{
+          return {count:prevState.count+1}
+        })
+      }
+      render(){
+        const {count} = this.state
+        return <button onClick={this.incrementCount}>Click {count} times</button>
+      }
+    }
+    ```
+    this was no. of click but if i include the count no. hover then we need to dublicate the whole code and add ```<h3 onMouseOver={this.incrementCount}>You have hover from me {count} times</h3>``` 
+    * we are dublicating code not reusing the function means in click counter and hover counter we are just rewrite the same function
+    * Component Tree 
+      <code>
+        Parent -> clickCounter (both are shareing same parents)
+               -> howerCounter (state is taken from parent and props are same for both)
+      </code>
+    * lift counter logic to parents and pass props but if:
+      <code>
+        parent -> clickCounter
+               -> component A > component B > howerCounter
+               (then its create problem) 
+      </code>
+    * ### what is HOC
+      * a pattern where a function takes a component as an argument and returns a new component
+      * 
+        ```js
+        const NewComponent = higherOrderComponent(orginal component)
+        /* NewComponent we also say as : enhanced component
+        ```
+    > Advantage : all the states will different for differen component
+    * eg: firstCounter.js
+      ```js
+      import React,{Component} from 'react'
+      // MyHOCCounter is our new component 
+      // WrappedComponent is our orginal component (props)
+      const MyHOCCounter = WrappedComponent=>{
+          class MyHOCCounter extends Component{
+              constructor(props){
+                  super(props)
+                  this.state = {count:0}
+              }
+              incrementCount = () => {
+                  this.setState(prevState =>{
+                      return {count:prevState.count+1}
+                  })
+              }
+              render(){
+                  return(
+                  <WrappedComponent 
+                  count = {this.state.count} 
+                  incrementCount = {this.incrementCount}
+                  />
+                  )
+              }
+          }
+          return MyHOCCounter
+      }
+      export default MyHOCCounter;
+      ```
+      Now we will use to track No. of click\
+      HOCClick.js
+      ```js
+      import React, {Component} from 'react'
+      import MyHOCCounter from './firstCounter'
 
+      class HOCClickCounter extends Component{
+          render(){
+              const {count,incrementCount} = this.props
+              return <button onClick={incrementCount}>You have clicked {count} times</button>
+          }
+      }
+      export default MyHOCCounter(HOCClickCounter);
+      ```
+      Now we will use to track No. of hover with the same counter (MyHOCCounter)\
+      HOCHover.js
+      ```js
+      import React, {Component} from 'react'
+      import MyHOCCounter from './firstCounter'
+
+      class HOCHoverCounter extends Component{
+          render(){
+              const {count,incrementCount} = this.props
+              return <p onMouseOver={incrementCount}>You have clicked {count} times</p>
+          }
+      }
+      export default MyHOCCounter(HOCHoverCounter);
+      ```
+    * the props is passed to the HOC but not to the component that rapped \
+      So, to fixed this in HOC
+      ```
+      <WrappedComponent ...>
+        {...this.props}
+        ...
+      ```
+      by this it says other remaning props just passout 
+    * if you dont want to use ```...this.props``` then\
+      Counter.js
+      ```
+      <button onClick={incrementCount}>...{this.props.name}...
+      ```
+      and in app.js
+      ```<Counter name="sj">```
+      - then it is not going to show any thing 'sj' So, by using {...this.props}
+    * passing parrameter in HOC function
+      ```
+      const withCounter(WrappedComponent,NoOfComp..)=>{
+        ...
+      }
+      ```
 
 License Under : [MIT LICENSE](LICENSE)

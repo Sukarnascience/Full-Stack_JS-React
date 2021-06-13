@@ -25,6 +25,8 @@ import FRParentInput from './components/FRParentInput';
 import MyPortal from './components/MyPortal';
 import MyBFF from './components/MyBFF';
 import MyERRORBoundary from './components/MyERRORBoundary'; 
+import HOCClickCounter from './components/HOCClickCounter';
+import HOCHoverCounter from './components/HOCHoverCounter';
 
 import myStyleModule from './components/myStyle.module.css';
 
@@ -80,6 +82,8 @@ function App() {
       <MyERRORBoundary>
         <MyBFF BFFName="nandan"/>
       </MyERRORBoundary>
+      <HOCClickCounter/>
+      <HOCHoverCounter/>
     </div>
   );
 }
