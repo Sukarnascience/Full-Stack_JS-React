@@ -1077,5 +1077,78 @@ function App() {
     * in earlear code where parents component re-render in every 2sec. include this child 
       ```<MyMemoComp data = {this.props.count} />```
     * and when we see output memo is render onces and parents keep on re rendering
-  
+
+* ##  Refs
+  * Refs make possible to access DOM notes directly without react\
+  eg: focasing on a text input (let us asume we have a login now as soon as the page lodes the username input field to be focused)
+  * example i want to focus on input while page opens / reload 
+    * there is 3 steps:
+      - Step 1 : (Create a refs)
+        ```js
+        // inside constructor
+        this.inputRef = React.createRef()
+        //...
+        ```
+      - Step 2 : (attach the Refs to our input element in the render method )
+        ```js
+        // we use 'ref' attribute
+        //....
+        <input type="text" ref={this.inputRef}/>
+        //....
+        ```
+      - Step 3 : ( call the focuse method on this input element )\
+        but first what exetly does the property hold after a ref is created So, we will:
+        ```js
+        componentDidMount(){
+          console.log(this.inputRef)
+        }
+        ```
+        after doing this we will get a output like:\
+        Console: Object>current:input...>...\
+        we can see a object has been log in the console If we expand we can see a property called 'current' of type input (because we have refer input in ref) and this 'current' property contain the actual DOM noted So, to focus in input element in componentDidMount() we simply call 'focus()' method on the 'current' property
+        ```js
+        componentDidMount(){
+          this.inputRef.current.focus()
+          //console.log(this.inputRef)
+        }
+        ```
+      - So, 2nd use of ref is to fetch the input value 
+        ```js
+        //inside render
+        <input type="text" ref={this.inputRef}/>
+        <button onClick={this.ifetch}>Click</button>
+        //...
+        ```
+        Lets create ifetch function
+        ```js
+        ifetch = () => {
+          alert(this.inputRef.current.value)
+        }
+        ```
+        we are accessing the value property of the input DOM note as a current property
+    * React has a 2nd way to set refs which is called 'CallBack ref' (it's Old way)
+      - Step 1:
+        ```js
+        // inside constructor()
+        this.cbRef = null
+        // Created a property asign a value of null
+        this.setCbRef = (element) => {
+          this.cbRef = element
+          // created a method asign a DOM element to the Ref
+        }
+        ``` 
+      - Step 2:
+        ```js
+        <input type="text" ref={rhis.setCbRef}/> 
+        ```
+      - Step 3:
+        inside the React callback ref react will call the ref with a DOM element when the component mounts and call it with null when its unmounts
+        ```js
+        componentDidMount(){
+          if(this.cbRef){
+            this.cbRef.focus() // we can access directly without using current
+          }
+        }
+        ```
+
 License Under : [MIT LICENSE](LICENSE)
