@@ -27,6 +27,9 @@ import MyBFF from './components/MyBFF';
 import MyERRORBoundary from './components/MyERRORBoundary'; 
 import HOCClickCounter from './components/HOCClickCounter';
 import HOCHoverCounter from './components/HOCHoverCounter';
+import CounterRenderProps from './components/MyRenderPropsComp';
+import { UserName,IsUserName } from './components/MyRenderPropsComp';
+import RunRenderPropCount from './components/RunRenderPropCount';
 
 import myStyleModule from './components/myStyle.module.css';
 
@@ -84,6 +87,10 @@ function App() {
       </MyERRORBoundary>
       <HOCClickCounter/>
       <HOCHoverCounter/>
+      <UserName name={()=>'Sukarna'}/>
+      <IsUserName name={(nameIs)=>nameIs?'Sukarna':'Gest'}/>
+      <CounterRenderProps render={(count,counter)=>(
+      <RunRenderPropCount count = {count} counter = {counter}/>)}/>
     </div>
   );
 }

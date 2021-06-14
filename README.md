@@ -1459,5 +1459,92 @@ function App() {
         ...
       }
       ```
+  * ## Render Props
+    * the term "render props" refers to a tecnique for sharing code between react component using a props whoes value is a function
+    * lets understand by example...
+      - Example 1: passing a function in the tag
+        ```js
+        <User name={()=>'Sukarna'}/>
+        ```
+        and to use that function 
+        ```js
+        //... 
+        return(
+          <div>{this.props.name}</div>
+        )
+        ```
+      - Example 2: if we need parameter to the function in the props based on parameter changes the output then,
+        ```js
+        <IsUserName name={(nameIs)=>nameIs?'Sukarna':'Gest'}/>
+        ``` 
+        and the in function:
+        ```js
+        //....
+        class IsUserName extends Component{
+            render(){
+                return(
+                    <div>{this.props.name(true)}</div>
+                )
+            }
+        }
+        //....
+        ```
+      - Example 3: we will make a counter...\
+        renderFile.js
+        ```js
+        //...
+        class CounterRenderProps extends Component{
+            constructor(props){
+                super(props)
+                this.state={
+                    count:0
+                }
+            }
+            incrementCount = () =>{
+                this.setState(prevState=>{
+                    return{count:prevState.count+1}
+                })
+            }
+            render(){
+                return(
+                    <div>
+                        {this.props.render(this.state.count,this.incrementCount)}
+                    </div>
+                )
+            }
+        }
+        //...
+        ```
+        parent where it will be in use...
+        ```js
+        <CounterRenderProps render={(count,counter)=>(
+        <RunRenderPropCount count = {count} counter = {counter}/>)}/>
+        ```
+        to handel the props another file...
+        ```js
+        //...
+        class RunRenderPropCount extends Component{
+            render(){
+                const {count,counter} = this.props
+                return(
+                    <div>
+                        <p>render counter from props</p>
+                        <button onClick={counter}>You have clicked - {count}</button>
+                    </div>
+                )
+            }
+        }
+        //...
+        ```
+      - if you want to passas a children u can by just
+        ```
+        {this.props.childern(...)}
+        ```
+        and the place you want to use 
+        ```
+        <MyrenderProps>
+          {...your function...}
+        </MyrenderProps>
+        ```
 
 License Under : [MIT LICENSE](LICENSE)
