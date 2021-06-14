@@ -1546,5 +1546,47 @@ function App() {
           {...your function...}
         </MyrenderProps>
         ```
+  * ## Context
+    * context propvide a way to pass data through the component tree without having to pass the props down manually at every level
+    <code>
+    App -> CA1
+        -> CA2 > CB2 > CC2
+        -> CA3 > CB3 > CC3 > CD3
+    </code>
+    I need a props should go from app to CD3 directly so then context comes
+    * we can do this in 3 step:
+      - Step1: Create context
+        ```js
+        const UserContext = React.createContext()
+        ```
+        now the ```createContext``` method comes with a provider and a consumer react component to grab that ...
+        ```js
+        const UserProvider = UserContext.Provider
+        const UserConsumer = UserContext.Consumer
+        ```
+        to use in other component you need to export it
+        ```export {UserProvider,UserConsumer}```
+      - Step2: Provide a context value\
+        at the top level where the props is going to pass to other nested component tree
+        ```js
+        import {UserProvider} from 'filePath'
+        <UserProvider value="Sukarna">
+          // pass to component tree
+          <CA3/>
+        </UserProvider>
+        ```
+      - Step3: Consume the context value\
+        now the component which required the pass on value
+        ```js
+        //this is CD3
+        import {UserConsumer} from 'filePath'
+        //...
+        <UserConsumer>
+          {name=>{
+            return <p>{name}</p>
+          }}
+        </UserConsumer>
+        ```
+        our username is the pass on value which we passed in ```<UserProvider>```
 
 License Under : [MIT LICENSE](LICENSE)
