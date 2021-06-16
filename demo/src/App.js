@@ -30,6 +30,7 @@ import HOCHoverCounter from './components/HOCHoverCounter';
 import CounterRenderProps from './components/MyRenderPropsComp';
 import { UserName,IsUserName } from './components/MyRenderPropsComp';
 import RunRenderPropCount from './components/RunRenderPropCount';
+import ContextPass from './components/ContextProviderComp';
 
 import myStyleModule from './components/myStyle.module.css';
 
@@ -91,6 +92,7 @@ function App() {
       <IsUserName name={(nameIs)=>nameIs?'Sukarna':'Gest'}/>
       <CounterRenderProps render={(count,counter)=>(
       <RunRenderPropCount count = {count} counter = {counter}/>)}/>
+      <ContextPass/>
     </div>
   );
 }

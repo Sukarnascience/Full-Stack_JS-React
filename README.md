@@ -1588,5 +1588,39 @@ function App() {
         </UserConsumer>
         ```
         our username is the pass on value which we passed in ```<UserProvider>```
+    * We can set a defalt value to our context
+      - Step1: while creating the context its pass as a argument to create context method
+        ```js
+        const UserContext = React.createContext('Jana')
+        ```
+        if you dont use ```<UserProvider>``` ths "Jana" will be defalt will pass to ```<UserConsumer>```
+    * ### Context type property 
+      at last example we see that how to use UserConsumer to consume the context value, But there is a other way :
+      - Use context type property on a class, for that we need to pass ```UserContext``` only
+        ```js
+        export default UserContext
+        ```
+        Now the Component which need to consume in the component tree there will ```CLASS_NAME.contextType = UserContext``` bilow class and to see the context data inside class render ```{this.context}```...
+      - if your application supports public class fild sintax we can replace ```CLASS_NAME.contextType = UserContext``` by typing inside the render() ```static contextType = UserContext 
+    > Its has a limitation that its only work with class component
+
+    * ### consume multiple context
+      ```js
+      function content(){
+        render(
+          <ThemeContext.Consume>
+            {theme=>(
+              <UserContext.Consume>
+                {user=>(
+                  <ProfilePage user={user} theme={theme}/>
+                )
+                }
+              </UserContext.Consume>
+            )}
+          </ThemeContext.Consume>
+        )
+      }
+      ``` 
+  * ## Mini Project to understand 
 
 License Under : [MIT LICENSE](LICENSE)
