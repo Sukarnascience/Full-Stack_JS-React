@@ -31,6 +31,8 @@ import CounterRenderProps from './components/MyRenderPropsComp';
 import { UserName,IsUserName } from './components/MyRenderPropsComp';
 import RunRenderPropCount from './components/RunRenderPropCount';
 import ContextPass from './components/ContextProviderComp';
+import HTTPPostData from './components/HTTPPostData';
+import HTTPGetFetch from './components/HTTPGetFetch';
 
 import myStyleModule from './components/myStyle.module.css';
 
@@ -93,6 +95,11 @@ function App() {
       <CounterRenderProps render={(count,counter)=>(
       <RunRenderPropCount count = {count} counter = {counter}/>)}/>
       <ContextPass/>
+      <hr/>
+      <h1>Get Data From Online</h1>
+      <hr/>
+      <HTTPPostData/>
+      <HTTPGetFetch/>
     </div>
   );
 }

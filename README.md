@@ -1621,6 +1621,11 @@ function App() {
         )
       }
       ``` 
-  * ## Mini Project to understand 
+  * ## Mini Project to understand HTTP GET & POST 
+    > we will use axios So, to install axios go to the dir where your porject is and then if you are using npm then in shel/terminal type: ```npm install axios -- save``` 
+    
+    * see the code once 
+      - For Posting [CODE](/src/components/HTTPPostData.js)
+      - For Fetching [CODE](/src/components/HTTPGetFetch.js)
 
 License Under : [MIT LICENSE](LICENSE)
