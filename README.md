@@ -1605,6 +1605,7 @@ function App() {
     > Its has a limitation that its only work with class component
 
     * ### consume multiple context
+      * Example 
       ```js
       function content(){
         render(
@@ -1625,7 +1626,7 @@ function App() {
     > we will use axios So, to install axios go to the dir where your porject is and then if you are using npm then in shel/terminal type: ```npm install axios -- save``` 
     
     * see the code once 
-      - For Posting [CODE](/src/components/HTTPPostData.js)
-      - For Fetching [CODE](/src/components/HTTPGetFetch.js)
+      - For Posting [CODE](demo/src/components/HTTPPostData.js)
+      - For Fetching [CODE](demo/src/components/HTTPGetFetch.js)
 
 License Under : [MIT LICENSE](LICENSE)
