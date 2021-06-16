@@ -1606,22 +1606,22 @@ function App() {
 
     * ### consume multiple context
       * Example 
-      ```js
-      function content(){
-        render(
-          <ThemeContext.Consume>
-            {theme=>(
-              <UserContext.Consume>
-                {user=>(
-                  <ProfilePage user={user} theme={theme}/>
-                )
-                }
-              </UserContext.Consume>
-            )}
-          </ThemeContext.Consume>
-        )
-      }
-      ``` 
+        ```js
+        function content(){
+          render(
+            <ThemeContext.Consume>
+              {theme=>(
+                <UserContext.Consume>
+                  {user=>(
+                    <ProfilePage user={user} theme={theme}/>
+                  )
+                  }
+                </UserContext.Consume>
+              )}
+            </ThemeContext.Consume>
+          )
+        }
+        ```
   * ## Mini Project to understand HTTP GET & POST 
     > we will use axios So, to install axios go to the dir where your porject is and then if you are using npm then in shel/terminal type: ```npm install axios -- save``` 
     
