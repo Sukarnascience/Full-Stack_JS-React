@@ -18,6 +18,8 @@ You can use this Repository for your learnig perpose also...
 * now we will work with src dir.
 
 # Documentation
+  * ## [OLD Version (Billow V16.8.0)](#Components)
+  * ## [With Hooks New Vesrion (Above V16.8.0)](#About-Hooks)
 
 * ## Components
 in React a components represent a part of the user interface
@@ -1628,5 +1630,17 @@ function App() {
     * see the code once 
       - For Posting [CODE](demo/src/components/HTTPPostData.js)
       - For Fetching [CODE](demo/src/components/HTTPGetFetch.js)
+
+# About Hooks
+* What is Hooks?
+  Hooks are a new feature addition in <b>React Version 16.8.0</b> which will allow you to use React feature without having to write a class, eg: State of the component 
+
+> Hooks don't work inside classes...
+
+* Why Hooks?
+  - Reason1: 
+      * understand how "this" keywords works in JS
+      * remember to bind event handler in class components
+      * classes don't midify very well & makes hot reloading very unreliable 
 
 License Under : [MIT LICENSE](LICENSE)
