@@ -33,6 +33,7 @@ import RunRenderPropCount from './components/RunRenderPropCount';
 import ContextPass from './components/ContextProviderComp';
 import HTTPPostData from './components/HTTPPostData';
 import HTTPGetFetch from './components/HTTPGetFetch';
+import MotherHookToApp from './hookComponents/MotherHookToApp';
 
 import myStyleModule from './components/myStyle.module.css';
 
@@ -96,10 +97,11 @@ function App() {
       <RunRenderPropCount count = {count} counter = {counter}/>)}/>
       <ContextPass/>
       <hr/>
-      <h1>Get Data From Online</h1>
+      <h2>Get Data From Online</h2>
       <hr/>
       <HTTPPostData/>
       <HTTPGetFetch/>
+      <MotherHookToApp/>
     </div>
   );
 }

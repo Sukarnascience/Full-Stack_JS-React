@@ -1,19 +1,24 @@
 .mycss{
-    background: rgb(65, 64, 64);
-    color: rgb(98, 255, 216);
+    background-image: linear-gradient(rgb(143, 204, 255),rgb(242, 255, 61),rgb(255, 166, 82));  
+    color: rgb(0,0,0);
     font-size: 30px;
+    border-radius: 25px;
 }
 .mycssbg{
-    background: rgb(0, 0, 0);
-    color: rgb(98, 255, 216);
+    background-image: linear-gradient(rgb(143, 204, 255),rgb(242, 255, 61),rgb(255, 166, 82)); 
+    color: rgb(0, 0, 0);
+    border-radius: 25px;
 }
 
 .MyCustomPortalCSS{
-    background: rgb(78, 78, 78);
-    color: rgb(95, 255, 188);
+    background-image: linear-gradient(rgb(143, 204, 255),rgb(242, 255, 61),rgb(255, 166, 82)); 
+    color: rgb(0, 0, 0);
+    text-align: center;
+    border-radius: 25px;
 }
 
 .Some_error{
-    background: rgb(0, 0, 0);
-    color: rgb(255, 95, 95);
+    background: rgb(255, 95, 95);
+    color: rgb(0, 0, 0);
+    border-radius: 25px;
 }

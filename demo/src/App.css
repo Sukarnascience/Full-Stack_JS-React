@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-image: linear-gradient(rgb(184, 61, 255),#acacac,#51ffc5);  
+  border-radius: 25px;
 }
 
 .App-logo {
@@ -38,10 +40,15 @@
 }
 
 table{
+  background-image: linear-gradient(rgb(143, 204, 255),rgb(242, 255, 61)); 
   border: 1px solid rgb(255, 98, 98);
 }
 
 th, td {
-  color: rgb(52, 243, 243);
+  color: rgb(0, 0, 0);
   border: 1px solid rgb(140, 98, 255);
+}
+
+body{
+  background: #000000;
 }
