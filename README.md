@@ -18,8 +18,9 @@ You can use this Repository for your learnig perpose also...
 * now we will work with src dir.
 
 # Documentation
-  * ## [OLD Version (Billow V16.8.0)](#Components)
+  * ## [OLD Version (Billow V16.8.0)](##Components)
   * ## [With Hooks New Vesrion (Above V16.8.0)](#About-Hooks)
+  * I want to give credit to a [YouTube Playlist](https://www.youtube.com/watch?v=QFaFIcGhPoM&list=PLC3y8-rFHvwgg3vaYJgHGnModB54rxOk3) created by [Codevolution](https://www.youtube.com/channel/UC80PWRj_ZU8Zu0HSMNVwKWw) from where i have learn this all stuffs 
 
 * ## Components
 in React a components represent a part of the user interface
@@ -1639,8 +1640,29 @@ function App() {
 
 * Why Hooks?
   - Reason1: 
-      * understand how "this" keywords works in JS
-      * remember to bind event handler in class components
-      * classes don't midify very well & makes hot reloading very unreliable 
+    * understand how "this" keywords works in JS
+    * remember to bind event handler in class components
+    * classes don't midify very well & makes hot reloading very unreliable 
+    With hooks we dont use class so all this porblem are solve 
+  - Reason2:
+    * there is no periticular way to reuse state full component logic 
+    * HOC & render props patterns do address this problem 
+    * makes the code harder to follow
+    * there is need a to shere state full logic in a better way
+  - Resion3:
+    * create components for complex scenarios such as data fetching & subscribing to events
+    * related code is not organized in one place \ 
+      example: data fetching - in componentDidMount & componentDidUpdate
+      example: event listeners - in componentDidMount & componentWillUnmount
+    * Because of this statefull logic - cannot break components into smaller onces
+  - Note worthy points:
+    1. it will work only in React verison 16.8 or higher
+    2. Hooks don't contain any breaking changes & the release is 100% backword compatible
+    3. Classes won't be removed from react there are still there 
+    4. you can't use hooks inside of a class Component 
+    5. now hooks provide a more direct API to the react concepts you already know
+
+
+[Move to TOP](#Full-Stack_JS-React)
 
 License Under : [MIT LICENSE](LICENSE)
