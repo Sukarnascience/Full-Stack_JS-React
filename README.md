@@ -1662,6 +1662,27 @@ function App() {
     4. you can't use hooks inside of a class Component 
     5. now hooks provide a more direct API to the react concepts you already know
 
+* ## useState
+  * if we started writing a function component and rap into a situation where you needed to app state then you have to convert the component to class component...
+  * that is because state only be used in class component we will change that opinion by using state hooks by which we can use state on functional component 
+  * Example 1: lets creat a counter 
+    - normally we use without hooks was : Create class > create state > create method > in render add button with onClick event 
+    - but now using Hooks:\
+      (Hooks accept a arument which is the initial value of the state property and returns the current value of the state and a method that is capable of updating that state property)
+      ```js
+      import React,{useState} from 'react'
+
+      function CounterOne(){
+          const [count,setCount] = useState(0)
+          return(
+              <div>
+                  <button onClick={()=>setCount(count+1)}>Your Count is {count}</button>
+              </div>
+          )
+      }
+
+      export default CounterOne;
+      ``` 
 
 [Move to TOP](#Full-Stack_JS-React)
 
