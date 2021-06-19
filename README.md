@@ -1633,12 +1633,12 @@ function App() {
       - For Fetching [CODE](demo/src/components/HTTPGetFetch.js)
 
 # About Hooks
-* What is Hooks?
+* ## What is Hooks?
   Hooks are a new feature addition in <b>React Version 16.8.0</b> which will allow you to use React feature without having to write a class, eg: State of the component 
 
 > Hooks don't work inside classes...
 
-* Why Hooks?
+* ## Why Hooks?
   - Reason1: 
     * understand how "this" keywords works in JS
     * remember to bind event handler in class components
@@ -1661,6 +1661,11 @@ function App() {
     3. Classes won't be removed from react there are still there 
     4. you can't use hooks inside of a class Component 
     5. now hooks provide a more direct API to the react concepts you already know
+* ## Rules of hooks
+  * only call hooks on the top level
+  * don't call hooks inside loops, conditions or nested function 
+  * only call hooks from react function 
+  * call them from with in react functional component and not just any regular JS function 
 
 * ## useState
   * if we started writing a function component and rap into a situation where you needed to app state then you have to convert the component to class component...
@@ -1683,6 +1688,96 @@ function App() {
 
       export default CounterOne;
       ``` 
+  * ## useState hooks with previous state
+    example: we will use count method but with increment, dicrement, reset
+    * without taking previous state and doing task is unsafe (its not the right way to change state value )
+    ```js
+    function CounterTwo(){
+        const initialValue = 0;
+        const [count,setCount] = useState(initialValue);
+        const incrementFive = () => {
+            for(let i = 0; i < 6; i++){
+                setCount(prevState=>prevState + 1)
+            }
+        }
+        /* Another way to increment 5 is 
+        const incrementFive = () => {setCount(prevState=>prevState.count + 5)}
+        */
+      return(
+          <div>
+              <p>Present Value: {count}</p>
+              <button onClick={()=>setCount(initialValue)}>Reset</button>
+              <button onClick={()=>setCount(prevState=>prevState+1)}>Increment</button>
+              <button onClick={()=>setCount(prevState=>prevState-1)}>Dicrement</button>
+              <button onClick={incrementFive}>Increment 5</button>
+          </div>
+      )
+    }
+    ```
+  * ## useState hooks with object
+  lets understand by a demo
+  ```js
+  function CounterObject(){
+      const [UserData,setUserdata] = useState(
+          {firstName:"",lastName:"",age:18})
+      /* 
+      by defalt firstName and lastName... is '' but when we start writing
+      any one of them the other will vanish this is because useState doesnot
+      automatically mearge and updates the object So, we use spread operater
+      '...UserData,' by this we are spreading the pervious state and overwriting 
+      the previous state with the new onces...
+      */
+      return(
+          <div>
+              <input type="text" value={UserData.firstName} onChange={e=>setUserdata({...UserData,firstName:e.target.value})}/>
+              <input type="text" value={UserData.lastName} onChange={e=>setUserdata({...UserData,lastName:e.target.value})}/>
+              <input type="number" value={UserData.age} onChange={e=>setUserdata({...UserData,age:e.target.value})}/>
+              <p>Your inserted data is :</p>
+              <ul>
+                  <li>Your First Name : {UserData.firstName}</li>
+                  <li>Your Last Name : {UserData.lastName}</li>
+                  <li>Your Age : {UserData.age}</li>
+              </ul>
+          </div>
+      )
+  }
+  ```
+  > So, the setter function provided by the useState hooks doesnot automatically mearge and update object we have to do that manually
+
+  if you want to see the JSON state then ```{JSON.stringfy(data)}```
+
+  * ## useState hooks with array
+  example: how to use hooks if state value is array we will understand by making a simple todo application
+  ```js
+  function todo(){
+      const [item,setItem] = useState([])
+      const [inputData,setInputData] = useState("")
+      const addItem = (e) => {
+          e.preventDefault()
+          setItem([...item,{data:inputData,id:item.length}])
+      }
+      return(
+          <div>
+              <form onSubmit={addItem}>
+                  <textarea value={inputData} onChange={e=>{setInputData(e.target.value)}}/>
+                  <button type="submit">Add ToDo</button>
+              </form>
+              <p>Your ToDo</p>
+              <ul>
+                  {item.map(value=>(<li id={value.id}>{value.data}</li>))}
+              </ul>
+          </div>
+      )
+  }
+  ```
+  * ### Summary - useState()
+    - the useState hook lets you add state to function component
+    - in classes the state is an object
+    - with the useState hooks, the state dosenot have to be an object
+    - the useState hook returns an array with 2 elements
+    - the first element is the current value of the state, and the second element is a state  setter function
+    - new state value depends on the previous state value? you can pass a function to the setter function
+    - when dealing with object/array always make sure to spread your state variable and then call the setter function
 
 [Move to TOP](#Full-Stack_JS-React)
 
