@@ -1604,11 +1604,14 @@ function App() {
         export default UserContext
         ```
         Now the Component which need to consume in the component tree there will ```CLASS_NAME.contextType = UserContext``` bilow class and to see the context data inside class render ```{this.context}```...
-      - if your application supports public class fild sintax we can replace ```CLASS_NAME.contextType = UserContext``` by typing inside the render() ```static contextType = UserContext 
+      - if your application supports public class fild sintax we can replace ```CLASS_NAME.contextType = UserContext``` by typing inside the render() ```static contextType = UserContext```
+       
     > Its has a limitation that its only work with class component
 
     * ### consume multiple context
+
       * Example 
+
         ```js
         function content(){
           render(
@@ -1625,6 +1628,7 @@ function App() {
           )
         }
         ```
+
   * ## Mini Project to understand HTTP GET & POST 
     > we will use axios So, to install axios go to the dir where your porject is and then if you are using npm then in shel/terminal type: ```npm install axios -- save``` 
     
