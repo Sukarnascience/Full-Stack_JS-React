@@ -1551,11 +1551,13 @@ function App() {
         ```
   * ## Context
     * context propvide a way to pass data through the component tree without having to pass the props down manually at every level
+
     <code>
     App -> CA1
         -> CA2 > CB2 > CC2
         -> CA3 > CB3 > CC3 > CD3
     </code>
+
     I need a props should go from app to CD3 directly so then context comes
     * we can do this in 3 step:
       - Step1: Create context
@@ -1569,7 +1571,7 @@ function App() {
         ```
         to use in other component you need to export it
         ```export {UserProvider,UserConsumer}```
-      - Step2: Provide a context value\
+      - Step2: Provide a context value \ 
         at the top level where the props is going to pass to other nested component tree
         ```js
         import {UserProvider} from 'filePath'
@@ -1578,7 +1580,7 @@ function App() {
           <CA3/>
         </UserProvider>
         ```
-      - Step3: Consume the context value\
+      - Step3: Consume the context value \
         now the component which required the pass on value
         ```js
         //this is CD3
@@ -1597,15 +1599,18 @@ function App() {
         const UserContext = React.createContext('Jana')
         ```
         if you dont use ```<UserProvider>``` ths "Jana" will be defalt will pass to ```<UserConsumer>```
+
     * ### Context type property 
-      at last example we see that how to use UserConsumer to consume the context value, But there is a other way :
+      at last example we see that how to use UserConsumer to consume the context value, But there is a other way : \
+      
       - Use context type property on a class, for that we need to pass ```UserContext``` only
         ```js
         export default UserContext
         ```
         Now the Component which need to consume in the component tree there will ```CLASS_NAME.contextType = UserContext``` bilow class and to see the context data inside class render ```{this.context}```...
+
       - if your application supports public class fild sintax we can replace ```CLASS_NAME.contextType = UserContext``` by typing inside the render() ```static contextType = UserContext```
-       
+
     > Its has a limitation that its only work with class component
 
     * ### consume multiple context
