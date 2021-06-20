@@ -1788,6 +1788,36 @@ function App() {
     - new state value depends on the previous state value? you can pass a function to the setter function
     - when dealing with object/array always make sure to spread your state variable and then call the setter function
 
+* ## useEffect
+  * if we work with class component we have to some sideEffect components eg: update the DOM, fetching data from end points, setting up subscription or timmers sence the render method is to early to form side effect we use life cycle method
+  * - Example 1 : updating the document title to the current counter value
+      ```js
+      componentDidMount(){
+        // this will render only onces in component lifecycle
+        document.title=`Clicked ${this.state.count}` //A1
+      }
+      componentDidUpdate(){
+        // to update we stuffs when ever their will be a change
+        document.title=`Clicked ${this.state.count}` //A2
+      }
+      ```
+    - Example 2 : timmer, we well log hello every 5 sec. well create tis timmer in the class component will be removed from DOM
+      ```js
+      componentDidMount(){
+        // this will render only onces in component lifecycle
+        this.interval = setInterval(this.tick,1000) //B1
+      }
+      componentDidUpdate(){
+        // to update we stuffs when ever their will be a change
+        clearInterval(this.interval) //B2
+      }
+      ```
+    - but when we see the same A1 and A2 code are repeated and they are together or split appart and the code reated to the timmer the code in B1 and B2 are related but kept in different code blocks (different lifecycle) and the A1 and B1 are completly unreated but still they are kept together
+    * So, to solve this we have <b>useEffect</b> hooks
+      1. the effect hook lets you perform side effects in function component
+      2. it is a close replacement for componentDidMount, componentDidUpdate & componentWillUnmount
+  
+
 [Move to TOP](#Full-Stack_JS-React)
 
 License Under : [MIT LICENSE](LICENSE)
