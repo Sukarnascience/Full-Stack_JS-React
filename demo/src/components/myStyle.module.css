@@ -11,7 +11,7 @@
 }
 
 .MyCustomPortalCSS{
-    background-image: linear-gradient(rgb(143, 204, 255),rgb(242, 255, 61),rgb(255, 166, 82)); 
+    background-image: linear-gradient(rgb(181, 52, 255),#acacac,#51ffc5); 
     color: rgb(0, 0, 0);
     text-align: center;
     border-radius: 25px;

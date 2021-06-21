@@ -1817,6 +1817,67 @@ function App() {
       1. the effect hook lets you perform side effects in function component
       2. it is a close replacement for componentDidMount, componentDidUpdate & componentWillUnmount
   
+  * ### useEffect after render
+    * for this example we will memic componentDidMount & componentDidUpdate but in function component using useEffect
+    * we will make a code to counter and on every click will update the title
+      - without useEffect hooks it was like
+        1. create class
+        2. create state
+        3. create componentDidMount() for initial value
+        4. create componentDidUpdate(prevProps,prevState)
+        5. render
+        6. onclick increment the state variable
+      - with useEffect
+        ```js
+        function CounterOneEffect(){
+            const [count,setCount] = useState(0)
+            // we pass in a paremeter which is a function
+            // which will get executed after every render of the component
+            useEffect(()=>{
+                document.title = `Clicked ${count}`
+            })
+            return(
+                <div>
+                    <button onClick={()=>setCount(count+1)}>Increment title</button>
+                </div>
+            )
+        }
+        ```
+        > useEffect runs after every render of the component 
+        
+  * ### useEffect conditionally run effects
+    - as we have seen that useEffect runs after every render of the component but if we want to run on some condition not every time then
+    - it we see that last example without hooks and all one more we will add a input field the when ever we click button its render but its re-render in typing also which we dont want So, we just want to re-render whenever the button is clicked not typing in input field then \
+    then without using Hooks
+      ```js
+      componentDidUpdate(prevProps,prevState){
+        if(prevState.count !== this.state.count){
+          document.title =  `Clicked ${count}`
+          console.log('Document title has updated')
+        }
+      }
+      ```
+    - but now using hooks
+      ```js
+      import React,{useState,useEffect} from 'react'
+
+      function CounterTwoEffect(){
+          const [count,setCount] = useState(0)
+          const [name,setName] = useState('')
+
+          useEffect(()=>{
+              document.title =  `Clicked ${count}`
+          },[count])
+
+          return(
+              <div>
+                  <input type="text" value={name} onChange={(e)=>setName(e.target.value)}/>
+                  <button onClick={()=>setCount(count+1)}>Increment title</button>
+              </div>
+          )
+      }
+      ```
+      we will pass a 2nd parameter in useEffect which is an array and it we pass something in that array then it will compair the old value and new value and rerender
 
 [Move to TOP](#Full-Stack_JS-React)
 

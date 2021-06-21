@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import HooksStyle from './MyHooksPageStyle.module.css'
 
 import {CounterOne,CounterTwo,CounterObject,CounterArray} from './useStatepartone'
-//import {} from './useEffectHooksJS'
+import {CounterOneEffect} from './useEffectHooksJS'
 
 function MotherHookToApp(){
     return ReactDOM.createPortal(
@@ -22,6 +22,7 @@ function MyHooks(){
             <CounterObject/>
             <CounterArray/>
             <p>useEffect Hook</p>
+            <CounterOneEffect/>
         </div>
     )
 }
