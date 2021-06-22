@@ -5,6 +5,9 @@ import HooksStyle from './MyHooksPageStyle.module.css'
 
 import {CounterOne,CounterTwo,CounterObject,CounterArray} from './useStatepartone'
 import {CounterOneEffect, CounterTwoEffect,MouseThrEffect,MouseFouEffect} from './useEffectHooksJS'
+import FetchOneuseEffect from './FetchOneuseEffect'
+import FetchTwouseEffect from './FetchTwouseEffect'
+import FetchThruseEffect from './FetchThruseEffect'
 
 function MotherHookToApp(){
     return ReactDOM.createPortal(
@@ -26,6 +29,9 @@ function MyHooks(){
             <CounterTwoEffect/>
             <MouseThrEffect/>
             <MouseFouEffect/>
+            <FetchOneuseEffect/>
+            <FetchTwouseEffect/>
+            <FetchThruseEffect/>
         </div>
     )
 }

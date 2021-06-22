@@ -1969,6 +1969,11 @@ function App() {
       ```
     - to run multiple useEffect to run then make sure you suprate them out thather then having a code in single useEffect
 
+  * ###  lets make a mini project to Fetch data with useEffect
+    1. take the data fetch it and stop (render onces) [FetchOneuseEffect.js](demo/src/hookComponents/FetchOneuseEffect.js)
+    2. we will fetch individual post by passing in the post id get request [FetchTwouseEffect.js](demo/src/hookComponents/FetchTwouseEffect.js)
+    3. now we will add a button and using that button we will take the input value and then fetch data onClick [FetchThruseEffect.js](demo/src/hookComponents/FetchThruseEffect.js)
+
 [Move to TOP](#Full-Stack_JS-React)
 
 License Under : [MIT LICENSE](LICENSE)
