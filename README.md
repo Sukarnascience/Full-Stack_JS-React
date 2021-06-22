@@ -2051,6 +2051,11 @@ function App() {
         ```
         and use where ever you want
 
+* ## useReducer
+  > update will be soon (wait)
+
+
+
 [Move to TOP](#Full-Stack_JS-React)
 
 License Under : [MIT LICENSE](LICENSE)
