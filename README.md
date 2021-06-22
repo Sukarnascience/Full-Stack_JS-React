@@ -1973,6 +1973,83 @@ function App() {
     1. take the data fetch it and stop (render onces) [FetchOneuseEffect.js](demo/src/hookComponents/FetchOneuseEffect.js)
     2. we will fetch individual post by passing in the post id get request [FetchTwouseEffect.js](demo/src/hookComponents/FetchTwouseEffect.js)
     3. now we will add a button and using that button we will take the input value and then fetch data onClick [FetchThruseEffect.js](demo/src/hookComponents/FetchThruseEffect.js)
+  
+* ## useContext hooks
+
+  * as we know "context" provide a way to pass data through the component tree without having to pass props down manually at every level
+  * we used to do before using hooks, we use to create:
+    ```js
+    export const UserContext = React.createContext()
+    ```
+    and when we will start passing
+    ```js
+    <UserContext.Provider value={passYourValue}>
+      <Your_Component_Tree/>
+    </UserContext.Provider>
+    ```
+    and where we want to consume
+    ```js
+    <UserContext.Consumer>
+      {user=>{<p>{user}</p>}}
+    </UserContext.Consumer>
+    ```
+  * if multiple context
+    to send:
+    ```js
+    <UserContext.Provider value={passYourValue}>
+      <User2Context.Provider value={passYourValue}>
+        <Your_Component_Tree/>
+      </User2Context.Provider>
+    </UserContext.Provider>
+    ```
+    to fetch:
+    ```js
+    <UserContext.Consumer>
+      {age=>{
+        return(
+          <User2Context.Consumer>
+            {user=>{<p>{user},{age}</p>}}
+          </User2Context.Consumer>
+        )
+      }}
+    </UserContext.Consumer>
+    ```
+  * now using hook ```useContext()```
+    - there are 3 different step to consume value on other component tree
+    - Step 1 : 
+      ```import {useContext} from 'react'```
+    - Step 2 : 
+      ```js
+      //import The Nessary Context
+      import {UserName,UserAge} from 'From_Context_File'
+      ```
+      the place you are importing from should have
+      ```js
+      export const UserName = React.createContext()
+      export const UserAge = React.createContext()
+      ```
+    - Step 3 : 
+      * call the useContext function by passing in a contexts as its argument and its return the context value
+      * inside a function()
+        ```js
+        const Data1 = useContext(UserName)
+        const Data2 = useContext(UserAge)
+        ```
+        and just use that variable where you want to ...
+      * to create a context is normal provider
+        ```js
+        export const userData = React.createContext()
+        return(
+          <userData.Provider value={YOUR_VALUE}>
+            <Component_Tree/>
+          </userData.Provider>
+        )
+        ```
+        and the place you want to consume
+        ```js
+        const data = useContext(userData)
+        ```
+        and use where ever you want
 
 [Move to TOP](#Full-Stack_JS-React)
 

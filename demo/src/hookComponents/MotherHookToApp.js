@@ -8,6 +8,7 @@ import {CounterOneEffect, CounterTwoEffect,MouseThrEffect,MouseFouEffect} from '
 import FetchOneuseEffect from './FetchOneuseEffect'
 import FetchTwouseEffect from './FetchTwouseEffect'
 import FetchThruseEffect from './FetchThruseEffect'
+import DataSend from './contextProv'
 
 function MotherHookToApp(){
     return ReactDOM.createPortal(
@@ -32,6 +33,7 @@ function MyHooks(){
             <FetchOneuseEffect/>
             <FetchTwouseEffect/>
             <FetchThruseEffect/>
+            <DataSend/>
         </div>
     )
 }
