@@ -1879,6 +1879,96 @@ function App() {
       ```
       we will pass a 2nd parameter in useEffect which is an array and it we pass something in that array then it will compair the old value and new value and rerender
 
+  * ### Run effect only onces 
+    - means we will mimic ```componentDidMount()```, So we will pass 2nd parameter as a empty [] in useEffect
+    - example:
+      ```js
+      function MouseThrEffect(){
+          const [x,setX] = useState(0)
+          const [y,setY] = useState(0)
+
+          const logMousePosition = e =>{
+              console.log("Mouse Event")
+              setX(e.clientX)
+              setY(e.clientY)
+          }
+
+          useEffect(()=>{
+              console.log("MouseThrEffect is called")
+              window.addEventListener('mousemove',logMousePosition)
+          },[])// because of this [] it will run only onces
+
+          return(
+              <div>
+                  <p>Mouse positon in this screen - X:{x},Y:{y}</p>
+              </div>
+          )
+      }
+      ```
+  * ### useEffect with cleanup
+    - we will memic ```componentWillUnmount()```, we 'return' a function which will run when component unmounts (whenever we 'return' its a cleanup function) 
+    - Example: if i want to stop tracking the mouse
+      ```js
+      function EffectMouse(){
+          const [x,setX] = useState(0)
+          const [y,setY] = useState(0)
+
+          const logMousePosition = e =>{
+              console.log("Mouse Event")
+              setX(e.clientX)
+              setY(e.clientY)
+          }
+
+          useEffect(()=>{
+              console.log("MouseFouEffect is called")
+              window.addEventListener('mousemove',logMousePosition)
+              return ()=>{
+                  console.log("MouseFouEffect has unmount")
+                  window.removeEventListener('mousemove',logMousePosition)
+              }
+          },[])
+
+          return(
+              <div>
+                  <p>Mouse positon in this screen - X:{x},Y:{y}</p>
+              </div>
+          )
+      }
+
+      export function MouseFouEffect(){
+          const [display,setDisplay] = useState(true)
+          return(
+              <div>
+                  <button onClick={()=>setDisplay(!display)}>Unmount</button>
+                  {display ? <EffectMouse/> : <p>Mouse Event has Unmount</p>}
+              </div>
+          )
+      }
+      ```
+  * ### useEffect with incorrect dependency
+    - we will take the mistake So, not required but 1 way has 2 tricks to do the same job
+    - example: keep on counting every 1sec.
+      ```js
+      const tick() => {setCount(count+1)}
+      useEffect(()=>{
+        const interval = setInterval(tick,1000)
+        return()=>{
+          cleanInterval(interval)
+        }
+      },[count])
+      ```
+      or
+      ```js
+      const tick() => {setCount(pervState=>prevState+1)}
+      useEffect(()=>{
+        const interval = setInterval(tick,1000)
+        return()=>{
+          cleanInterval(interval)
+        }
+      },[])
+      ```
+    - to run multiple useEffect to run then make sure you suprate them out thather then having a code in single useEffect
+
 [Move to TOP](#Full-Stack_JS-React)
 
 License Under : [MIT LICENSE](LICENSE)
