@@ -2054,7 +2054,31 @@ function App() {
 * ## useReducer
   > update will be soon (wait)
 
-
+* ## useCallback
+  * useCallback is a hook that will return a memorized version of the callback function that only changes if one of the dependencies has changed
+  * it is usefull when passing callback to optimized child components that reply on reference ezuality to prevent unnessary rendering 
+  * example : 
+    ```js
+    function CallBackHook(){
+        const [skill,setskill] = useState(4)
+        const [salary,setSalary] = useState(20000)
+        const incrementSkill = useCallback(()=>{
+            console.log("called skill")
+            setskill(skill+1)
+        },[skill])
+        const incrementSalary = useCallback(()=>{
+            console.log("called salary")
+            setSalary(salary+1500)
+        },[salary])
+        return(
+            <div>
+                <button onClick={incrementSkill}>Skill Years +</button>
+                <button onClick={incrementSalary}>Salary +</button>
+                <p>If your skill year is :{skill} then you may get : rs{salary} salary</p>
+            </div>
+        )
+    }
+    ```
 
 [Move to TOP](#Full-Stack_JS-React)
 

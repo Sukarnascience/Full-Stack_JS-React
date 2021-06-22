@@ -9,6 +9,7 @@ import FetchOneuseEffect from './FetchOneuseEffect'
 import FetchTwouseEffect from './FetchTwouseEffect'
 import FetchThruseEffect from './FetchThruseEffect'
 import DataSend from './contextProv'
+import CallBackHook from './useCallbackHook'
 
 function MotherHookToApp(){
     return ReactDOM.createPortal(
@@ -34,6 +35,7 @@ function MyHooks(){
             <FetchTwouseEffect/>
             <FetchThruseEffect/>
             <DataSend/>
+            <CallBackHook/>
         </div>
     )
 }
