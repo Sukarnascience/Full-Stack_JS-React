@@ -12,7 +12,7 @@ export default function MemoHook(){
     const isEven = useMemo(()=>{
         let i = 0
         while(i<2000000000) i++
-        return count1%2 == 0
+        return count1%2 === 0
     },[count1]) // by this we will see the delay in UI 
     return(
         <div>

@@ -2096,7 +2096,7 @@ function App() {
         const isEven = useMemo(()=>{
             let i = 0
             while(i<2000000000) i++
-            return count1%2 == 0
+            return count1%2 === 0
         },[count1]) // by this we will see the delay in UI 
         return(
             <div>
@@ -2112,6 +2112,52 @@ function App() {
         ) 
     }
     ```
+* ## useRef hook
+  - by the name only we can understand that we its use for refrence (Refs make possible to access DOM notes directly without react)
+  - Use Case 1 :
+    ```js
+    function UseCaseOuseRef(){
+        const [userIN,setUserIN] = useState("")
+        const inputRef = useRef(null)
+        useEffect(()=>{
+            //focus the input
+            inputRef.current.focus()
+        },[])
+        return(
+            <div>
+                <input ref={inputRef} type="text" value={userIN} onChange={(e)=>{setUserIN(e.target.value)}}/>
+                <p>You have Typed: {userIN}</p>
+            </div>
+        )
+    }
+    ```
+  - Use Case 2 :
+    ```js
+    function UseCaseTuseRef(){
+        const [timer,setTimer] = useState(0)
+        const intervalRef = useRef()
+        // it will help to make it global value
+        useEffect(()=>{
+            intervalRef.current = setInterval(()=>{
+                setTimer(prevTime=>prevTime+1)
+            },1000)
+            return()=>{
+                clearInterval(intervalRef.current)
+            }
+        },[])
+        return(
+            <div>
+                <p>{timer}</p>
+                <button onClick={()=>clearInterval(intervalRef.current)}>Clear Interval</button>
+            </div>
+        )
+    }
+    ``` 
+* ## Custome Hook
+  * a costom hook is basically a JS function whose name starts with "use"
+  * a custom hook can also call other hooks in required
+  * why? - share logic like: Alternative to HOCs & RenderProps
+  * lets make our own Hooks, Like Notification : [CODE](demo/src/hookComponents/CustomNotification.js)
 
 [Move to TOP](#Full-Stack_JS-React)
 

@@ -11,6 +11,7 @@ import FetchThruseEffect from './FetchThruseEffect'
 import DataSend from './contextProv'
 import CallBackHook from './useCallbackHook'
 import MemoHook from './useMemoHook'
+import {UseCaseOuseRef,UseCaseTuseRef} from './useRefHook'
 
 function MotherHookToApp(){
     return ReactDOM.createPortal(
@@ -35,9 +36,15 @@ function MyHooks(){
             <FetchOneuseEffect/>
             <FetchTwouseEffect/>
             <FetchThruseEffect/>
+            <p>useContext Hook</p>
             <DataSend/>
+            <p>useCallback Hook</p>
             <CallBackHook/>
+            <p>useMemo Hook</p>
             <MemoHook/>
+            <p>useRef Hook</p>
+            <UseCaseOuseRef/>
+            <UseCaseTuseRef/>
         </div>
     )
 }
