@@ -14,6 +14,7 @@ import MemoHook from './useMemoHook'
 import {UseCaseOuseRef,UseCaseTuseRef} from './useRefHook'
 import Notify from './CustomNotification'
 import UpdateTitle from './customHook'
+import { SimpleUseReducer,ComplexUseReducer,ComplexUseReducerTwo } from './useReducerHook'
 
 function MotherHookToApp(){
     return ReactDOM.createPortal(
@@ -49,6 +50,9 @@ function MyHooks(){
             <UseCaseTuseRef/>
             <Notify message="Woow you are great" title="Toast"/>
             <UpdateTitle/>
+            <SimpleUseReducer/>
+            <ComplexUseReducer/>
+            <ComplexUseReducerTwo/>
         </div>
     )
 }

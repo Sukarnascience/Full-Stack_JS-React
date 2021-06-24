@@ -2052,7 +2052,258 @@ function App() {
         and use where ever you want
 
 * ## useReducer
-  
+  * useReducer is a hook that is used for state management
+  * it is an alternative to useState
+* ### what's the different?
+  - useState is built using useReducer
+  * useReducer hook is related to reducers
+* what is reduce?
+  - > its in vanala JS / a normal JS So, we need to understand reducers to understand the hooks
+  - the ```reduce()``` method executes a reducer function (that you provide) on each element of the array, resulting in a single output value
+  * reduce method takes 2 parameters, 1st parameter is the reducer function , 2nd parameter is an initial value that the reducer function accept again 2 parameter which reduce the value to singal and returns that value \ 
+    example:
+    ```js
+    const array1 = [1,2,3,4];
+    const reducer = (accumulation,currentvalue) => accumulation + currentvalue;
+    // 1 + 2 + 3 + 4
+    colsole.log(array1.reduce(reducer));
+    // Output : 10
+    // 5 + 1 + 2 + 3 + 4
+    colsole.log(array1.reduce(reducer,5));
+    // Output : 15
+    ```
+  * 
+    <table>
+      <tr>
+        <th>Reduce in JS</th>
+        <th>useRucer Hooks</th>
+      </tr>
+      <tr>
+        <td>1. array.reduce(reducer,initialValue)</td>
+        <td>1. useReducer(reducer,initialState)</td>
+      </tr>
+      <tr>
+        <td>2. singalValue = reducer(accumulator,itemValue)</td>
+        <td>2. newState = reducer(current,action)</td>
+      </tr>
+      <tr>
+        <td>3. Retuce method and returns a singal value</td>
+        <td>3. useReducer returns a pair of value [newState,dispatch]</td>
+      </tr>
+    </table>
+* ### Summary
+  * useReducer is a hook that is used for state management in react
+  * useReducer is related to reducer function
+  * useReducer(reducer,initialState)
+    - reducer(currentState,action)
+
+* useReducer (simple state & action)
+  - we will create a counter with increment, decrement, reset button
+    ```js
+    import React,{useReducer} from 'react'
+    const initialState = 0
+    const reducer=(state,action) =>{
+        switch(action){
+            case 'increment':
+                return state + 1 
+            case 'dicrement':
+                return state - 1
+            case 'reset':
+                return initialState
+            default:
+                return state
+        }
+    }
+    function SimpleUseReducer(){
+        const [count,dispatch] = useReducer(reducer,initialState)
+        return(
+            <div>
+                <p>useReducer hooks</p>
+                <p>{count}</p>
+                <button onClick={()=>{dispatch('increment')}}>increment</button>
+                <button onClick={()=>{dispatch('dicrement')}}>dicrement</button>
+                <button onClick={()=>{dispatch('reset')}}>reset</button>
+            </div>
+        )
+    } 
+    ```
+* ### useReducer (complex state & action)
+  - Example 1 : Its a object type
+    ```js
+    const initialState2 = {
+        firstCounter:0
+    }
+    const reducer2=(state,action) =>{
+        switch(action.type){
+            case 'increment':
+                return {firstCounter:state.firstCounter + 1}
+            case 'dicrement':
+                return {firstCounter:state.firstCounter - 1}
+            case 'reset':
+                return {firstCounter:initialState}
+            default:
+                return {state}
+        }
+    }
+    function ComplexUseReducer(){
+        const [count,dispatch] = useReducer(reducer2,initialState2)
+        return(
+            <div>
+                <p>useReducer hooks complex</p>
+                <p>{count.firstCounter}</p>
+                <button onClick={()=>{dispatch({type:'increment'})}}>increment</button>
+                <button onClick={()=>{dispatch({type:'dicrement'})}}>dicrement</button>
+                <button onClick={()=>{dispatch({type:'reset'})}}>reset</button>
+            </div>
+        )
+    }
+    ```
+  - Example 2: I need to increment upto 5 snece we are doing in object so,...
+    ```js
+    const initialState3 = {
+        firstCounter:0
+    }
+    const reducer3=(state,action) =>{
+        switch(action.type){
+            case 'increment':
+                return {firstCounter:state.firstCounter + action.value}
+            case 'dicrement':
+                return {firstCounter:state.firstCounter - action.value}
+            case 'reset':
+                return {firstCounter:initialState}
+            default:
+                return {state}
+        }
+    }
+    export function ComplexUseReducerTwo(){
+        const [count,dispatch] = useReducer(reducer3,initialState3)
+        return(
+            <div>
+                <p>useReducer hooks complex</p>
+                <p>{count.firstCounter}</p>
+                <button onClick={()=>{dispatch({type:'increment',value:5})}}>increment 5</button>
+                <button onClick={()=>{dispatch({type:'dicrement',value:10})}}>dicrement 10</button>
+                <button onClick={()=>{dispatch({type:'reset'})}}>reset</button>
+            </div>
+        )
+    }
+    ``` 
+  - Example 3: (if there are multiple object then spread operator should must be used to rewrite otherwise you will over write everything fresh...)
+    ```js
+    const initialState3 = {
+        firstCounter:0,
+        secondCount:10
+    }
+    const reducer3=(state,action) =>{
+        switch(action.type){
+            case 'increment':
+                return {...state,firstCounter:state.firstCounter + action.value}
+            case 'dicrement':
+                return {...state,firstCounter:state.firstCounter - action.value}
+            case 'increment2nd':
+                return {...state,secondCounter:state.secondCounter+ action.value}
+            case 'dicrement2nd':
+                return {...state,secondCounter:state.secondCounter - action.value}
+            case 'reset':
+                return {firstCounter:initialState}
+            default:
+                return {state}
+        }
+    }
+    //.....
+    ``` 
+    * we can maintain both the state and action as object
+      - action as object we can pass more data
+      - state as object we can keep track all multiple start variable
+* ### Multiple useReducer 
+  * if we need 2 counter with the exact same state transitions there is much simplers alternative by using multiple useReducer, Example:
+    ```js
+    const initialState = 0
+    const reducer=(state,action) =>{
+        switch(action){
+            case 'increment':
+                return state + 1 
+            case 'dicrement':
+                return state - 1
+            case 'reset':
+                return initialState
+            default:
+                return state
+        }
+    }
+    export function SimpleUseReducer(){
+        const [count1,dispatch1] = useReducer(reducer,initialState)
+        const [count2,dispatch2] = useReducer(reducer,initialState)
+        return(
+            <div>
+                <p>useReducer hooks simple</p>
+                <p>{count1} and {count2}</p>
+                <button onClick={()=>{dispatch1('increment')}}>increment 1</button>
+                <button onClick={()=>{dispatch1('dicrement')}}>dicrement 1</button>
+                <button onClick={()=>{dispatch1('reset')}}>reset 1</button>
+                // see we can use same reducer for different part
+                <button onClick={()=>{dispatch2('increment')}}>increment 2</button>
+                <button onClick={()=>{dispatch2('dicrement')}}>dicrement 2</button>
+                <button onClick={()=>{dispatch2('reset')}}>reset 2</button>
+            </div>
+        )
+    }
+    ```
+* ### useReducer with useContext
+  - Step 1: Create a whole reducer
+  - Step 2: Create a context ```export const MyContext = React.createContext()```
+  - Step 3: We will pass count and our dispatch as a value in provider
+    ```js
+    <MyContext.Provider value={
+      {Countstate:count,
+      Countdispatch:dispatch}
+    }>
+    //...
+    ```
+  - Step 4: Now where we want to use we will use these
+    ```js
+    const Counter = useContext(MyCounter)
+    return(
+      <div>
+        <p>{Counter.Countstate}</p>
+        <button onClick={()=>Counter.Countdispatch()}>
+      </div>
+    )
+    ```
+
+* ### useState vs useReducer
+<table>
+  <tr>
+    <th>Sinario</th>
+    <th>useState</th>
+    <th>useReducer</th>
+  </tr>
+  <tr>
+    <td>Type of state</td>
+    <td>Number,string,boolen</td>
+    <td>object,array</td>
+  </tr>
+  <tr>
+    <td>number of state transition</td>
+    <td>one or 2</td>
+    <td>2 or more</td>
+  </tr>
+  <tr>
+    <td>related state transition</td>
+    <td>No</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>boolen logic</td>
+    <td>No bunnion logic</td>
+    <td>complex bunnion logic</td>
+  </tr>
+  <tr>
+    <td>local Vs global</td>
+    <td>local</td>
+    <td>global</td>
+  </tr>
+</table>  
 
 * ## useCallback
   * useCallback is a hook that will return a memorized version of the callback function that only changes if one of the dependencies has changed
