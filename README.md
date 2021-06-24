@@ -2052,7 +2052,7 @@ function App() {
         and use where ever you want
 
 * ## useReducer
-  > update will be soon (wait)
+  
 
 * ## useCallback
   * useCallback is a hook that will return a memorized version of the callback function that only changes if one of the dependencies has changed
@@ -2157,7 +2157,7 @@ function App() {
   * a costom hook is basically a JS function whose name starts with "use"
   * a custom hook can also call other hooks in required
   * why? - share logic like: Alternative to HOCs & RenderProps
-  * lets make our own Hooks, Like Notification : [CODE](demo/src/hookComponents/CustomNotification.js)
+  * lets make our own Hooks, Like Update Title: [CODE](demo/src/hookComponents/customHook.js)
 
 [Move to TOP](#Full-Stack_JS-React)
 

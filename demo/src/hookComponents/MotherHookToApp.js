@@ -13,6 +13,7 @@ import CallBackHook from './useCallbackHook'
 import MemoHook from './useMemoHook'
 import {UseCaseOuseRef,UseCaseTuseRef} from './useRefHook'
 import Notify from './CustomNotification'
+import UpdateTitle from './customHook'
 
 function MotherHookToApp(){
     return ReactDOM.createPortal(
@@ -46,7 +47,8 @@ function MyHooks(){
             <p>useRef Hook</p>
             <UseCaseOuseRef/>
             <UseCaseTuseRef/>
-            <Notify/>
+            <Notify message="Woow you are great" title="Toast"/>
+            <UpdateTitle/>
         </div>
     )
 }
