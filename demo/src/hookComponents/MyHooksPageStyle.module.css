@@ -1,4 +1,5 @@
 .HooksStylePG{
     border-radius: 25px;
-    background-image: linear-gradient(rgb(181, 52, 255),#acacac,#51ffc5);
+    background-image: linear-gradient(#515dff,#acacac,#000000);
+    color: #ffffff;
 }

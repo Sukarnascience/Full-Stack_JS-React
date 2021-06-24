@@ -1,7 +1,8 @@
 .App {
   text-align: center;
-  background-image: linear-gradient(rgb(181, 52, 255),#acacac,#51ffc5);  
+  background-image: linear-gradient(rgb(37, 37, 37),#636363,#979797);  
   border-radius: 25px;
+  color: rgb(236, 246, 255);
 }
 
 .App-logo {

@@ -12,6 +12,7 @@ import DataSend from './contextProv'
 import CallBackHook from './useCallbackHook'
 import MemoHook from './useMemoHook'
 import {UseCaseOuseRef,UseCaseTuseRef} from './useRefHook'
+import Notify from './CustomNotification'
 
 function MotherHookToApp(){
     return ReactDOM.createPortal(
@@ -45,6 +46,7 @@ function MyHooks(){
             <p>useRef Hook</p>
             <UseCaseOuseRef/>
             <UseCaseTuseRef/>
+            <Notify/>
         </div>
     )
 }
