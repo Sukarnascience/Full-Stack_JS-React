@@ -1,0 +1,53 @@
+.notification{
+    top: 5px;
+    right: 5px;
+
+    background-color: rgba(0, 255, 234, 0.726);
+
+    color: rgb(255, 255, 255);
+
+    box-shadow: 2px 2px rgba(255, 255, 255, 0.562);
+    box-sizing: border-box;
+    position: fixed;
+    border-radius: 5px;
+
+    display: grid;
+    grid-row-gap:2px;
+    grid-template-rows: auto auto;
+    
+}
+
+.topPart{
+    display: grid;
+    grid-column-gap: 2px;
+    grid-template-columns: 22px auto 25px;
+}
+.downPart{
+    display: grid;
+    grid-column: auto;
+    grid-template-columns: auto;
+    text-align: right;
+}
+.notifiData{
+    text-align: left;
+}
+
+.iconPoision{
+    text-align: center;
+}
+
+.closeButton{
+    background-color: transparent;
+    border: transparent;
+    color: rgb(255, 255, 255);
+    transition:ease-out;
+}
+
+.crossPosition{
+    text-align: center;
+}
+
+p { 
+    padding: 0 0; 
+    margin: 0 0;
+  }
